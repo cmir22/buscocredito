@@ -1,0 +1,28 @@
+.mat-card{
+    background: white;
+    color: black;
+    width: 20%;
+    margin: 1% auto;
+    padding: 2%;
+    border-radius: 0;
+
+
+.mat-card-title{
+    font-size: 2rem;
+    text-transform: uppercase;
+}
+
+.mat-card-content{
+    width: 20%;
+    text-align: center;
+    margin: 0 auto;
+    p.content{
+        text-align: initial;
+    }
+
+    imag{
+        width: 20%;
+        padding: 2;
+    }
+}
+}

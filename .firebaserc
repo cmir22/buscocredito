@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "buscocredito-c380b": {
+      "hosting": {
+        "buscoCredito": [
+          "buscocredito-c380b"
+        ]
+      }
+    }
+  }
+}
