@@ -6,5 +6,8 @@ export interface PostI {
     id: String;
     tagsPost: String;
     fileRef?: String;
+    nameUser?: String;
+    moneyPost?: String;
+    monthPost?: String;
 
 }

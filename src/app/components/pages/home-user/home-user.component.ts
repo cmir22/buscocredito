@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home-user.component.scss']
 })
 export class HomeUserComponent implements OnInit {
-  public posts: {
+ /* public posts: {
     id: string;
     titlePost: string;
     contentPost: string;
@@ -50,7 +50,7 @@ export class HomeUserComponent implements OnInit {
         imagePost: 'https://picsum.photos/id/237/200/300'
       }
     ]
-
+*/
     public posts$ : Observable<PostI[]>;
   constructor(private postSvc: PostService) { }
 

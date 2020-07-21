@@ -1,42 +1,48 @@
-
-
 <div class="container" *ngIf="posts$ | async as posts;else loading">
-
+    <mat-card class="crearSolicitud">Solicitar un Credito</mat-card>
     <!--  {{posts$ | async | json}} -->
 
-    <mat-card class="post-card" *ngFor="let post of posts">
-        <mat-card-header>
-            <mat-card-title>
-                <a [routerLink]="['/post',post.id]">
+    <mat-card class="post-card" *ngFor="let post of posts" [routerLink]="['/post',post.id]">
+  
+       
+        <div class="infoCards">
 
-                    {{post.titlePost}}
-                </a>
-            </mat-card-title>
+            <div>
+                <button class="infoCardButtonName" mat-flat-button disabled>{{post.nameUser}}</button>
 
-        </mat-card-header>
+                <button class="infoCardButtonCredit" mat-flat-button disabled>{{post.tagsPost}}</button>
+
+                <button class="infoCardButtonMoney" mat-flat-button disabled>{{post.moneyPost}}</button>
+
+                <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
+            </div>
+
+        </div>
+
+
 
         <img matCardImage [src]="post.imagePost">
 
-        <mat-card-content>
+        <!--    <mat-card-content>
             <p>
                 {{post.contentPost}}
+                {{post.nameUser}}
             </p>
+   
         </mat-card-content>
-        <mat-divider></mat-divider>
+         -->
+        <!--
         <mat-card-actions>
-          <mat-chip-list>
-
-            <!--selected-->
-            <mat-chip  *ngFor="let tag of post.tagsPost" [ngClass]="tag">
-                {{tag}}
-            </mat-chip>
-
-          </mat-chip-list>
-
-
+            <mat-chip-list>
+                <a class="tipoPrestamoText">Tipo de Prestamo:</a>
+            
+                <mat-chip class="tipoCredito" *ngFor="let tag of post.tagsPost" [ngClass]="tag">
+                    {{tag}}
+                </mat-chip>
+            </mat-chip-list>
         </mat-card-actions>
 
-
+-->
     </mat-card>
 
 </div>
