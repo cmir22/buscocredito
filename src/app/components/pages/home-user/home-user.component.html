@@ -1,29 +1,77 @@
-<div class="container" *ngIf="posts$ | async as posts;else loading">
-    <mat-card class="crearSolicitud">Solicitar un Credito</mat-card>
-    <!--  {{posts$ | async | json}} -->
+<!-------------------------------------------------------------------------------------------------------->
+<main class="nav">
+    <div class="row" *ngIf="posts$ | async as posts">
+        <div class="sidebar text-center">
+            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
+            <h3 class="Username">Cruz Ibarra</h3>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Propuestas</button>
 
-    <mat-card class="post-card" *ngFor="let post of posts" [routerLink]="['/post',post.id]">
-  
-       
-        <div class="infoCards">
+            <button type="button" class="btn btn-secondary btn-lg btn-block" *ngFor="let post of posts"
+                [routerLink]="['/post',post.id]">{{post.nameUser}}</button>
 
-            <div>
-                <button class="infoCardButtonName" mat-flat-button disabled>{{post.nameUser}}</button>
+            <mat-divider class="matDividerSidebar"></mat-divider>
+            <button type="button" class="btn btn-secondary btn-lg btn-block">Aceptadas</button>
+        </div>
 
-                <button class="infoCardButtonCredit" mat-flat-button disabled>{{post.tagsPost}}</button>
+        <!-------------------------------------------------------------------------------------------------------->
 
-                <button class="infoCardButtonMoney" mat-flat-button disabled>{{post.moneyPost}}</button>
+        <div class="filterSidebar text-center">
 
-                <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
-            </div>
+            <h3 class="filterTextSidebar">Filtro</h3>
+
+            <mat-form-field appearance="fill">
+                <mat-label>Tipo de Credito</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let creditTipe of credits" [value]="creditTipe.value">
+                    {{creditTipe.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              <mat-form-field appearance="fill">
+                <mat-label>Meses</mat-label>
+                <mat-select>
+                  <mat-option *ngFor="let months of month" [value]="months.value">
+                    {{months.viewValue}}
+                  </mat-option>
+                </mat-select>
+              </mat-form-field>
+
+              
+
+
 
         </div>
 
+        <div class="content">
+
+            <!-------------------------------------------------------------------------------------------------------->
+
+            <div class="container" *ngIf="posts$ | async as posts;else loading">
+
+                <mat-card class="crearSolicitud">Solicitantes de Credito</mat-card>
+                <!--  {{posts$ | async | json}} -->
+
+                <mat-card class="post-card" *ngFor="let post of posts" [routerLink]="['/post',post.id]">
 
 
-        <img matCardImage [src]="post.imagePost">
+                    <div class="infoCards">
 
-        <!--    <mat-card-content>
+                        <div>
+                            <button class="infoCardButtonName" mat-flat-button disabled>{{post.nameUser}}</button>
+
+                            <button class="infoCardButtonCredit" mat-flat-button disabled>{{post.tagsPost}}</button>
+
+                            <button class="infoCardButtonMoney" mat-flat-button disabled>{{post.moneyPost}}</button>
+
+                            <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
+                        </div>
+
+                    </div>
+
+                    <img matCardImage [src]="post.imagePost">
+
+                    <!--    <mat-card-content>
             <p>
                 {{post.contentPost}}
                 {{post.nameUser}}
@@ -31,7 +79,7 @@
    
         </mat-card-content>
          -->
-        <!--
+                    <!--
         <mat-card-actions>
             <mat-chip-list>
                 <a class="tipoPrestamoText">Tipo de Prestamo:</a>
@@ -43,13 +91,19 @@
         </mat-card-actions>
 
 -->
-    </mat-card>
-
-</div>
+                </mat-card>
 
 
-<ng-template #loading>
-    <div class="container-spinner">
-        <mat-spinner></mat-spinner>
-    </div>
-</ng-template>
+
+                <!-------------------------------------------------------------------------------------------------------->
+            </div>
+
+        </div>
+
+        <!-------------------------------------------------------------------------------------------------------->
+
+        <ng-template #loading>
+            <div class="container-spinner">
+                <mat-spinner></mat-spinner>
+            </div>
+        </ng-template>

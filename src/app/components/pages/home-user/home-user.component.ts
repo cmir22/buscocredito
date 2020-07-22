@@ -5,12 +5,36 @@ import { PostService} from '../../posts/post.service';
 import { PostI} from '../../../shared/models/post.interface';
 import { Observable } from 'rxjs';
 
+interface creditTipe {
+  value: string;
+  viewValue: string;
+}
+
+interface months {
+  value: string;
+  viewValue: string;
+}
+
 @Component({
   selector: 'app-home-user',
   templateUrl: './home-user.component.html',
   styleUrls: ['./home-user.component.scss']
 })
 export class HomeUserComponent implements OnInit {
+
+  credits: creditTipe[] = [
+    {value: 'personal-0', viewValue: 'Personal'},
+    {value: 'negocio-1', viewValue: 'Negocio'},
+  ];
+
+  month: months[] = [
+    {value: 'personal-0', viewValue: '12 Meses'},
+    {value: 'negocio-1', viewValue: '24 Meses'},
+    {value: 'negocio-1', viewValue: '36 Meses'},
+    {value: 'negocio-1', viewValue: '48 Meses'},
+  ];
+
+
  /* public posts: {
     id: string;
     titlePost: string;

@@ -6,6 +6,10 @@
     //DISTANCE BETWEEN CARDS
     grid-row-gap: 25px;
     justify-content: center;
+    margin-top: 65px !important;
+    margin-left: 200px !important;
+
+
 }
 
 .post-card{
@@ -106,11 +110,6 @@
         margin-right: 5px;
     }
 
-
-
-    
-
-
 }
 
 .crearSolicitud{
@@ -123,4 +122,75 @@
 
 .tipoCredito{
     cursor: pointer;
+}
+
+// DESIGN FOR THE LEFT NAV BAR
+
+html,
+body,
+main.nav {
+    height: 100%;
+}
+
+main.nav {
+	display: table;
+	width: 100%;
+	margin-top: -50px;
+	padding: 0;
+	/*set left/right padding according to needs*/
+	-moz-box-sizing: border-box;
+    box-sizing: border-box;
+    
+}
+
+main .row {
+	height: 100%;
+	display: table-row;
+}
+
+main .sidebar {
+	display: table-cell;
+	width: 250px;
+	background: #343a40;
+	color: #aaa;
+    padding-top: 20px;
+    
+}
+
+main .filterSidebar {
+	display: table-cell;
+	width: 180px;
+    background-color: #F2F2F2;
+    padding-top: 20px;
+
+    .filterTextSidebar{
+        color: black;
+    }
+    
+}
+
+main .content {
+	display: table-cell;
+	vertical-align: top;
+	padding-left: 10px;
+    padding-top: 20px;
+
+}
+
+.img-circle{
+    margin-top: 70px !important;
+    border-radius: 50%;
+}
+
+.Username{
+    margin-top: 10px;
+    color: white;
+}
+
+// END DESIGN FOR THE LEFT NAV BAR
+
+.matDividerSidebar{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    background-color: white;
 }

@@ -14,6 +14,9 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatSelectModule} from '@angular/material/select';
+
 
 
 //--------------------------------------------------------------------------------
@@ -29,7 +32,9 @@ const myModule = [
   MatProgressSpinnerModule,
   MatChipsModule,
   MatFormFieldModule,
-  MatInputModule
+  MatInputModule,
+  MatDividerModule,
+  MatSelectModule
   
 ]
 

@@ -3,7 +3,9 @@
 
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/">BuscoCredito</a>
+    <img style="margin-right: 3px;" src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/Sin%20t%C3%ADtulo-1.png?alt=media&token=5d7d36af-ddd4-4540-85e5-2683c1fc4601" width="80" height="40" class="d-inline-block align-top" alt="" loading="lazy">
+
+    <a class="navbar-brand" href="/login">BuscoCredito</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
         aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
@@ -22,17 +24,24 @@
         <!-------------------------------------------------------------------------------------------------------------------------->
 
         <li class="nav-item form-inline my-2 my-lg-0">
-
-            <a style="color: white;" class="nav-link " routerLink="/login" *ngIf="authSvc.userData | async; else showLogin" (click)="onLogout()">Logout</a>
+            <a style="color: white;" class="nav-link " routerLink="/homeUser" *ngIf="authSvc.userData | async; else showHome">Inicio</a>
+            
+            
 
             <ng-template #showLogin>
                 <a style="color: white;" class="nav-link " routerLink="/login" routerLinkActive="active">Iniciar Sesion</a>
+            </ng-template>
+
+            <ng-template #showHome>
+              
             </ng-template>
 
 
             <a style="color: white;" class="nav-link " routerLink="/admin" routerLinkActive="active" *ngIf="authSvc.userData | async">Perfil</a>
 
             <a style="color: white;" class="nav-link " routerLink="/about" routerLinkActive="active">Conocenos</a>
+
+            <a style="color: white;" class="nav-link " routerLink="/login" *ngIf="authSvc.userData | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>
         </li>
 
         <!-------------------------------------------------------------------------------------------------------------------------->
