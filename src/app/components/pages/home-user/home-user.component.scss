@@ -1,13 +1,13 @@
 .container{
     margin-top:  25px;
     //display: grid;
-    grid-template-columns: auto ;
+    grid-template-columns: auto;
     grid-column-gap: 15px;
     //DISTANCE BETWEEN CARDS
     grid-row-gap: 25px;
     justify-content: center;
     margin-top: 65px !important;
-    margin-left: 200px !important;
+    margin-left: 60px !important;
 
 
 }
@@ -23,7 +23,7 @@
 
 
 
-    img{
+    .cardImage{
         margin-top: -145px !important;
         height: 120px;
         width: 120px;
@@ -47,6 +47,7 @@
 
     .infoCards{
         background-color:#D9D9D9 ;
+        grid-template-columns: auto auto auto auto auto;
         margin-left: 160px;
         height: auto;
         width: auto;
@@ -55,7 +56,7 @@
         .nombreUsuarioCard{
             margin-left: 15px !important;
             margin-top: 20px !important;
-            font-size: 30px !important;
+            font-size: 20px !important;
             
         }
 
@@ -63,19 +64,19 @@
             margin-left: 15px !important;
             margin-top: 20px !important;
             height: 50px;
-            width: 300px;
-            font-size: 30px;
-            background-color: #3B3659;
+            width: 290px;
+            font-size: 20px;
+            background-color: #005727;
             color: white;
             cursor: pointer;
         }
 
         .infoCardButtonMonths{
             margin-left: 15px !important;
-            font-size: 30px;
+            font-size: 20px;
             height: 50px ;
-            width: 300px;  
-            background-color: #3B3659;
+            width: 290px;  
+            background-color: #343a40;
             color: white;
             cursor: pointer;
         }
@@ -84,19 +85,36 @@
             margin-left: 15px !important;
             margin-top: 20px !important;
             height: 50px;
-            width: 300px;
-            font-size: 30px;
-            background-color: #3B3659;
+            width: 290px;
+            font-size: 20px;
+            background-color: #343a40;
             color: white;
             cursor: pointer;
         }
+
+        .mate{
+            margin-top: -120px;
+            margin-left: 650px;
+            height: 120px;
+            background-color: #f6f6f6;
+
+            .imageVerficated{
+                margin-top: -5px;
+                margin-left: 25px;
+            }
+
+        }
+
+
+
+
 
         .infoCardButtonName{
             margin-left: 15px !important;
             margin-top: 20px !important;
             height: 50px;
-            width: 300px;
-            font-size: 30px;
+            width: 290px;
+            font-size: 20px;
             background-color: #D9D9D9;
             color: black;
             cursor: pointer;
@@ -162,6 +180,10 @@ main .filterSidebar {
 	width: 180px;
     background-color: #F2F2F2;
     padding-top: 20px;
+    // RIGHT SHADOW
+    -webkit-box-shadow: 14px 0px 24px -9px rgba(0,0,0,0.4);
+    -moz-box-shadow: 14px 0px 24px -9px rgba(0,0,0,0.4);
+    box-shadow: 14px 0px 24px -9px rgba(0,0,0,0.4);
 
     .filterTextSidebar{
         color: black;
@@ -185,6 +207,7 @@ main .content {
 .Username{
     margin-top: 10px;
     color: white;
+
 }
 
 // END DESIGN FOR THE LEFT NAV BAR
@@ -192,5 +215,5 @@ main .content {
 .matDividerSidebar{
     margin-top: 50px;
     margin-bottom: 50px;
-    background-color: white;
+    //background-color: white;
 }

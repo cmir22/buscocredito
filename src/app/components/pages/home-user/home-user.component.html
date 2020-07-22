@@ -2,15 +2,15 @@
 <main class="nav">
     <div class="row" *ngIf="posts$ | async as posts">
         <div class="sidebar text-center">
-            <img src="https://s3.amazonaws.com/uifaces/faces/twitter/mantia/128.jpg" class="img-circle">
+            <img width="120" height="120" src="https://scontent.ftij2-1.fna.fbcdn.net/v/t1.0-9/47441277_1451944074939940_1721077250448687104_n.jpg?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=t4RQed45UWAAX_I85MZ&_nc_ht=scontent.ftij2-1.fna&oh=ba51972b036089240150e3dd8efb3c02&oe=5F3EBC14" class="img-circle">
             <h3 class="Username">Cruz Ibarra</h3>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">Propuestas</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block" style="background-color: black; border: none;">Propuestas</button>
 
             <button type="button" class="btn btn-secondary btn-lg btn-block" *ngFor="let post of posts"
                 [routerLink]="['/post',post.id]">{{post.nameUser}}</button>
 
             <mat-divider class="matDividerSidebar"></mat-divider>
-            <button type="button" class="btn btn-secondary btn-lg btn-block">Aceptadas</button>
+            <button type="button" class="btn btn-secondary btn-lg btn-block" style="background-color: black; border: none;">Aceptadas</button>
         </div>
 
         <!-------------------------------------------------------------------------------------------------------->
@@ -39,8 +39,6 @@
 
               
 
-
-
         </div>
 
         <div class="content">
@@ -65,11 +63,19 @@
                             <button class="infoCardButtonMoney" mat-flat-button disabled>{{post.moneyPost}}</button>
 
                             <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
+
+                            <mat-card class="mate">
+                                <img class="imageVerficated" src="https://www.nicepng.com/png/detail/73-730077_verify-users-via-e-mail-verified-user.png" width="175" height="100" alt="..." >
+                            </mat-card>
+
+                            
                         </div>
+
+                        
 
                     </div>
 
-                    <img matCardImage [src]="post.imagePost">
+                    <img class="cardImage" matCardImage [src]="post.imagePost">
 
                     <!--    <mat-card-content>
             <p>

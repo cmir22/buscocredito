@@ -5,6 +5,8 @@ import { PostService } from '../post.service'
 import { Observable } from 'rxjs';
 import { PostI } from 'src/app/shared/models/post.interface';
 
+
+
 @Component({
   selector: 'app-post',
   templateUrl: './post.component.html',

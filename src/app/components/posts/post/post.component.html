@@ -1,10 +1,11 @@
 <div class="container" *ngIf="post$ | async as post; else loading">
 
     <mat-card class="post-card">
-        <mat-card-header>
-            <mat-card-title>
-
-                {{post.titlePost}}
+        <mat-card-header class="nameTitle">
+            <mat-card-title  >
+                <h1 style="font-size: 50px;">
+                    {{post.nameUser}}
+                </h1>
 
             </mat-card-title>
 
@@ -13,9 +14,21 @@
         <img matCardImage [src]="post.imagePost">
 
         <mat-card-content>
-            <p>
-                {{post.contentPost}}
-            </p>
+            
+            <div class="infoCards">
+
+                <div>
+                    <button class="infoCardButtonName" mat-flat-button disabled>{{post.nameUser}}</button>
+
+                    <button class="infoCardButtonCredit" mat-flat-button disabled>{{post.tagsPost}}</button>
+
+                    <button class="infoCardButtonMoney" mat-flat-button disabled>{{post.moneyPost}}</button>
+
+                    <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
+                </div>
+
+            </div>
+
         </mat-card-content>
 
     </mat-card>

@@ -24,7 +24,7 @@ export class HomeUserComponent implements OnInit {
 
   credits: creditTipe[] = [
     {value: 'personal-0', viewValue: 'Personal'},
-    {value: 'negocio-1', viewValue: 'Negocio'},
+    {value: 'negocio-1', viewValue: 'Negocio'}
   ];
 
   month: months[] = [
