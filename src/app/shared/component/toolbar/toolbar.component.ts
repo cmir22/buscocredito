@@ -14,7 +14,6 @@ export class ToolbarComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   onLogout(): void{
     this.authSvc.logout();
   }

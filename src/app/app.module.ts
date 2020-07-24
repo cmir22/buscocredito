@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NewPostComponent } from './components/post/new-post/new-post.component';
 import { NewPostModule } from './components/posts/new-post/new-post.module';
 import { PostComponent } from './components/posts/post/post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -21,15 +20,18 @@ import { environment } from 'src/environments/environment';
 
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { ReactiveFormsModule} from '@angular/forms'
+import { ReactiveFormsModule} from '@angular/forms';
+import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    NewPostComponent,
     PostComponent,
-    ToolbarComponent
+    ToolbarComponent,
+    ContainerAppComponent,
+
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 //-------------------ANGULAR MATERIAL---------------------------------------------
@@ -16,6 +16,8 @@ import {MatInputModule} from '@angular/material/input';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
+import {MatTableModule} from '@angular/material/table';
+
 
 
 
@@ -34,10 +36,12 @@ const myModule = [
   MatFormFieldModule,
   MatInputModule,
   MatDividerModule,
-  MatSelectModule
-  
+  MatSelectModule,
+  MatTableModule,
+
 ]
 
+//--------------------------------------------------------------------------------
 
 @NgModule({
   declarations: [],

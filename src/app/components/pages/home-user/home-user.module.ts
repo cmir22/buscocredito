@@ -8,13 +8,12 @@ import { MaterialModule} from '../../../material.module'
 
 
 
-
 @NgModule({
   declarations: [HomeUserComponent],
   imports: [
     CommonModule,
     HomeUserRoutingModule,
-    MaterialModule
+    MaterialModule,
   ]
 })
 export class HomeUserModule {
