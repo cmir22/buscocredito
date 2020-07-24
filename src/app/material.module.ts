@@ -17,9 +17,8 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatSelectModule} from '@angular/material/select';
 import {MatTableModule} from '@angular/material/table';
-
-
-
+import {MatSortModule} from '@angular/material/sort';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
 //--------------------------------------------------------------------------------
 
@@ -38,6 +37,8 @@ const myModule = [
   MatDividerModule,
   MatSelectModule,
   MatTableModule,
+  MatSortModule,
+  MatPaginatorModule
 
 ]
 
