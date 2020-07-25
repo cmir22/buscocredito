@@ -7,6 +7,13 @@ import { PostService } from '../../posts/post.service'
 import { PostI } from 'src/app/shared/models/post.interface';
 
 import Swal from 'sweetalert2'
+import { MatDialog } from '@angular/material/dialog';
+
+import { EditPostComponent} from '../../posts/edit-post/edit-post.component'
+
+import { NewPostComponent } from '../../posts/new-post/new-post.component'
+
+
 
 export interface PeriodicElement {
   name: string;
@@ -30,7 +37,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private postSvc: PostService) { }
+  constructor(private postSvc: PostService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.postSvc.getAllPosts().subscribe(posts => (this.dataSource.data = posts));
@@ -50,6 +57,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
 
   onEditPost(post: PostI) {
     console.log('Edit post', post);
+    this.openDialogEdit(post);
   }
 
   onDeletePost(post: PostI) {
@@ -63,19 +71,54 @@ export class AboutComponent implements OnInit, AfterViewInit {
       confirmButtonColor: 'black',
       cancelButtonColor: 'red',
       confirmButtonText: 'Si, Acepto'
-    }).then(result =>{
-      if(result.value){
+    }).then(result => {
+      if (result.value) {
         // Desea Borra
-        console.log('Borrar');
-        Swal.fire('Borrado','El post ha sido Borrado','success');
+        this.postSvc.deletePostById(post).then(() => {
+          Swal.fire('Borrado', 'El post ha sido Borrado', 'success');
+        }).catch(() => {
+          Swal.fire('Error!', 'Ha existido un eror', 'error');
+        });
+        //console.log('Borrar');  
       }
     })
 
   }
 
   onNewPost() {
-    console.log("Nueva Solicitud")
+    this.openDialog();
+    //console.log("Nueva Solicitud")
   }
+
+  openDialog(post?: PostI): void {
+    const config = {
+      data: {
+        message: post ? 'Edit Post' : 'New Post',
+        content: post
+      }
+    }
+    const dialogRef = this.dialog.open(NewPostComponent,config);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result ${result}');
+
+    });
+  }
+
+  openDialogEdit(post?: PostI): void {
+    const config = {
+      data: {
+        message: post ? 'Edit Post' : 'New Post',
+        content: post
+      }
+    }
+    const dialogRef = this.dialog.open(EditPostComponent,config);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result ${result}');
+
+    });
+  }
+
+
 
 
 

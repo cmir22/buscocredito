@@ -1,9 +1,11 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, finalize } from 'rxjs/operators';
 import { PostI } from '../../shared/models/post.interface';
+import { FileI } from '../../shared/models/file.interface';
 import { Action } from 'rxjs/internal/scheduler/Action';
+import { AngularFireStorage } from '@angular/fire/storage';
 
 
 @Injectable({
@@ -11,13 +13,17 @@ import { Action } from 'rxjs/internal/scheduler/Action';
 })
 export class PostService {
 
-  private postColection: AngularFirestoreCollection<PostI>;
+  private postsCollection: AngularFirestoreCollection<PostI>;
+  private filePath: any;
+  private downloadURL: Observable<string>;
 
-  constructor(private asf: AngularFirestore) { }
+  constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
+    this.postsCollection = afs.collection<PostI>('posts');
+  }
 
 
   public getAllPosts(): Observable<PostI[]> {
-    return this.asf.collection('posts')
+    return this.postsCollection
       .snapshotChanges()
       .pipe(
         map(actions =>
@@ -31,9 +37,47 @@ export class PostService {
   }
 
 
-public getOnePost(id:PostI): Observable<PostI>{
-  return this.asf.doc<PostI>(`posts/${id}`).valueChanges();
-}
+  public getOnePost(id: PostI): Observable<PostI> {
+    return this.afs.doc<PostI>(`posts/${id}`).valueChanges();
+  }
 
+  public deletePostById(PostI) {
+    return this.postsCollection.doc(PostI.id).delete();
+  }
+
+  public editPostById(PostI) {
+    return this.postsCollection.doc(PostI.id).update(PostI);
+  }
+
+  public preAddAndUpdatePost(post: PostI, image: FileI): void{
+    this.uploadImage(post,image);
+  }
+
+  private uploadImage(post: PostI, image: FileI){
+    this.filePath = `images/${image.name}`;
+    const fileRef = this.storage.ref(this.filePath);
+    const task = this.storage.upload(this.filePath,image);
+    task.snapshotChanges().pipe(finalize(() =>{
+      fileRef.getDownloadURL().subscribe(urlImage => {
+        this.downloadURL = urlImage;
+        this.savePost(post);
+      });
+
+    })
+    ).subscribe();
+  }
+
+  private savePost(post: PostI){
+    const postObj = {
+      nameUser: post.nameUser,
+      moneyPost: post.moneyPost,
+      imagePost: this.downloadURL,
+      fileRef: this.filePath,
+      tagsPost: post.tagsPost,
+      monthPost: post.monthPost
+    };
+    //edit post
+    this.postsCollection.add(postObj);
+  }
 
 }

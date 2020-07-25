@@ -25,7 +25,9 @@ const routes: Routes = [
 
   { path: 'profile', loadChildren: () => import('./components/admin/profile/profile.module').then(m => m.ProfileModule) },
 
-  { path: 'table', component: TableComponent }
+
+  { path: 'edit-post', loadChildren: () => import('./components/posts/edit-post/edit-post.module').then(m => m.EditPostModule) },
+
 
 ];
 

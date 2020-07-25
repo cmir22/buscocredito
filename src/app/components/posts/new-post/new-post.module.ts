@@ -1,12 +1,21 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { NewPostRoutingModule } from './new-post-routing.module';
+import { NewPostComponent } from './new-post.component';
 
+import { MaterialModule } from '../../../material.module';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
-  declarations: [],
+  declarations: [NewPostComponent],
   imports: [
-    CommonModule
+    CommonModule,
+    NewPostRoutingModule,
+    MaterialModule,
+    FormsModule, 
+    ReactiveFormsModule
   ]
 })
 export class NewPostModule { }
