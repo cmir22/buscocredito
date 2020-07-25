@@ -40,7 +40,7 @@
             <a style="color: white;" class="nav-link " routerLink="/admin" routerLinkActive="active"
                 *ngIf="authSvc.userData | async">Perfil</a>
 
-            <a style="color: white;" class="nav-link " routerLink="/about" routerLinkActive="active">Conocenos</a>
+            <a style="color: white;" class="nav-link " routerLink="/about" routerLinkActive="active">Administrador</a>
 
             <a style="color: white;" class="nav-link " routerLink="/login"
                 *ngIf="authSvc.userData | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>

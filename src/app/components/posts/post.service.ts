@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from '@angular/fire/firestore';
+import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { PostI } from '../../shared/models/post.interface';
@@ -10,6 +10,8 @@ import { Action } from 'rxjs/internal/scheduler/Action';
   providedIn: 'root'
 })
 export class PostService {
+
+  private postColection: AngularFirestoreCollection<PostI>;
 
   constructor(private asf: AngularFirestore) { }
 
