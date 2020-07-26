@@ -8,12 +8,16 @@ import { MaterialModule } from '../../../material.module';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
+
+
 @NgModule({
   declarations: [EditPostComponent],
   imports: [
     CommonModule,
     EditPostRoutingModule,
-    MaterialModule
-  ]
+    MaterialModule,
+  ],
+
+  exports:[EditPostComponent]
 })
 export class EditPostModule { }

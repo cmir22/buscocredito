@@ -29,6 +29,9 @@ const routes: Routes = [
   { path: 'edit-post', loadChildren: () => import('./components/posts/edit-post/edit-post.module').then(m => m.EditPostModule) },
 
 
+  { path: 'modal', loadChildren: () => import('./shared/component/modal/modal.module').then(m => m.ModalModule) },
+
+
 ];
 
 @NgModule({

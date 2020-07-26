@@ -3,7 +3,7 @@ export interface PostI {
     titlePost?: String;
     contentPost?: String;
     imagePost?: any;
-    id?: String;
+    id?: any;
     tagsPost?: String;
     fileRef?: String;
     nameUser?: String;

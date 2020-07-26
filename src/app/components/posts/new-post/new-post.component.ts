@@ -3,6 +3,8 @@ import {MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material/dialog
 import { FormGroup,FormControl,Validators} from '@angular/forms';
 import { PostI} from '../../../shared/models/post.interface';
 import { PostService } from '../../../components/posts/post.service';
+
+
 @Component({
   selector: 'app-new-post',
   templateUrl: './new-post.component.html',

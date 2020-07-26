@@ -1,14 +1,14 @@
+ 
+<h2>Editar</h2>
+<mat-dialog-content class="dialog-content" >
 
-<h2>Editar Post</h2>
 
-<mat-dialog-content class="dialog-content">
+    <div class="new-post-container" >
 
-
-    <div class="new-post-container">
-
-        <form [formGroup]="newPostForm" (ngSubmit)="addNewPost(newPostForm.value)">
+        <form [formGroup]="editPostForm" (ngSubmit)="editPost(editPostForm.value)" >
 
             <mat-form-field>
+                
                 <mat-label>Nombre</mat-label>
                 <input matInput  formControlName="nameUser">
             </mat-form-field>

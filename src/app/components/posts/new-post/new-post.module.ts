@@ -16,6 +16,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     MaterialModule,
     FormsModule, 
     ReactiveFormsModule
-  ]
+  ],
+  exports:[NewPostComponent]
 })
 export class NewPostModule { }

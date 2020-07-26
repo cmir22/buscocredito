@@ -39,10 +39,16 @@
 
 
             <div class="container-input-file">
+                <!--
                 <label class="custom-file">
                     <input type="file" formControlName="imagePost" (change)="handleImage($event)"/>
                     <mat-icon>cloud_upload</mat-icon><span>Elija su Imagen</span>
                 </label>
+            -->
+                <mat-form-field>
+                    <mat-label>Foto</mat-label>
+                    <input matInput  formControlName="imagePost">
+                </mat-form-field>
             </div>
 
             <div class="container-button">

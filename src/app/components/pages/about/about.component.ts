@@ -12,6 +12,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditPostComponent} from '../../posts/edit-post/edit-post.component'
 
 import { NewPostComponent } from '../../posts/new-post/new-post.component'
+import { ModalComponent } from '../../../shared/component/modal/modal.component';
+import { ModalModule } from 'src/app/shared/component/modal/modal.module';
 
 
 
@@ -49,15 +51,15 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
 
-  applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  applyFilter(/*event: Event*/ filterValue: string) {
+    //const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
 
   onEditPost(post: PostI) {
     console.log('Edit post', post);
-    this.openDialogEdit(post);
+    this.openDialog(post); 
   }
 
   onDeletePost(post: PostI) {
@@ -86,37 +88,37 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
   onNewPost() {
-    this.openDialog();
+    this.openDialogNew();
     //console.log("Nueva Solicitud")
   }
 
-  openDialog(post?: PostI): void {
+  public openDialog(post?: PostI): void {
     const config = {
       data: {
         message: post ? 'Edit Post' : 'New Post',
         content: post
       }
-    }
+    };
+    const dialogRef = this.dialog.open(ModalComponent,config);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log('Dialog result ${result}');
+    });
+  }
+
+
+  public openDialogNew(post?: PostI): void {
+    const config = {
+      data: {
+        message: post ? 'Edit Post' : 'New Post',
+        content: post
+      }
+    };
     const dialogRef = this.dialog.open(NewPostComponent,config);
     dialogRef.afterClosed().subscribe(result => {
       console.log('Dialog result ${result}');
-
     });
   }
 
-  openDialogEdit(post?: PostI): void {
-    const config = {
-      data: {
-        message: post ? 'Edit Post' : 'New Post',
-        content: post
-      }
-    }
-    const dialogRef = this.dialog.open(EditPostComponent,config);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('Dialog result ${result}');
-
-    });
-  }
 
 
 

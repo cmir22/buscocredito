@@ -45,19 +45,25 @@ export class PostService {
     return this.postsCollection.doc(PostI.id).delete();
   }
 
-  public editPostById(PostI) {
-    return this.postsCollection.doc(PostI.id).update(PostI);
+  public editPostById(post: PostI, newImage?: FileI) {
+
+    if (newImage) {
+      this.uploadImage(post, newImage);
+    } else {
+      return this.postsCollection.doc(post.id).update(post);
+    }
+
   }
 
-  public preAddAndUpdatePost(post: PostI, image: FileI): void{
-    this.uploadImage(post,image);
+  public preAddAndUpdatePost(post: PostI, image: FileI): void {
+    this.uploadImage(post, image);
   }
 
-  private uploadImage(post: PostI, image: FileI){
+  private uploadImage(post: PostI, image: FileI) {
     this.filePath = `images/${image.name}`;
     const fileRef = this.storage.ref(this.filePath);
-    const task = this.storage.upload(this.filePath,image);
-    task.snapshotChanges().pipe(finalize(() =>{
+    const task = this.storage.upload(this.filePath, image);
+    task.snapshotChanges().pipe(finalize(() => {
       fileRef.getDownloadURL().subscribe(urlImage => {
         this.downloadURL = urlImage;
         this.savePost(post);
@@ -67,7 +73,8 @@ export class PostService {
     ).subscribe();
   }
 
-  private savePost(post: PostI){
+  private savePost(post: PostI) {
+    //   console.log('PostSvc', post);
     const postObj = {
       nameUser: post.nameUser,
       moneyPost: post.moneyPost,
@@ -76,8 +83,16 @@ export class PostService {
       tagsPost: post.tagsPost,
       monthPost: post.monthPost
     };
-    //edit post
-    this.postsCollection.add(postObj);
+
+    if (post.id) {
+      return this.postsCollection.doc(post.id).update(postObj);
+    } else {
+      //edit post
+      return this.postsCollection.add(postObj);
+    }
+
+
+
   }
 
 }

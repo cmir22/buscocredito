@@ -15,6 +15,8 @@ import { MaterialModule } from '../../../material.module';
     CommonModule,
     AboutRoutingModule,
     MaterialModule,
-  ]
+  ],
+
+  exports:[AboutComponent]
 })
 export class AboutModule { }
