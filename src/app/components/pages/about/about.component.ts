@@ -51,8 +51,8 @@ export class AboutComponent implements OnInit, AfterViewInit {
   }
 
 
-  applyFilter(/*event: Event*/ filterValue: string) {
-    //const filterValue = (event.target as HTMLInputElement).value;
+  applyFilter(event: Event/*,filterValue: string*/) {
+    const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 

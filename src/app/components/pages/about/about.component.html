@@ -21,31 +21,31 @@
     <td mat-cell *matCellDef="let element"> {{element.nameUser}} </td>
   </ng-container>
 
-  <!--  -->
+  <!--mat-sort-header  -->
   <ng-container matColumnDef="moneyPost">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Dinero </th>
-    <td mat-cell *matCellDef="let element"> {{element.moneyPost}} </td>
+    <th mat-header-cell *matHeaderCellDef > Dinero </th>
+    <td mat-cell *matCellDef="let element">$ {{element.moneyPost}} </td>
   </ng-container>
 
   <!--  -->
   <ng-container matColumnDef="tagsPost">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Tipo de Prestamo </th>
+    <th mat-header-cell *matHeaderCellDef> Tipo de Prestamo </th>
     <td mat-cell *matCellDef="let element"> {{element.tagsPost}} </td>
   </ng-container>
 
   <!--  -->
   <ng-container matColumnDef="monthPost">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Meses </th>
+    <th mat-header-cell *matHeaderCellDef> Meses </th>
     <td mat-cell *matCellDef="let element"> {{element.monthPost}} </td>
   </ng-container>
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
   <ng-container matColumnDef="actions">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header> Acciones </th>
+    <th mat-header-cell *matHeaderCellDef > Acciones </th>
     <td mat-cell *matCellDef="let element">
 
-      <button mat-stroked-button color="primary" (click)="onEditPost(element)">
+      <button mat-stroked-button (click)="onEditPost(element)">
         <mat-icon>edit</mat-icon>
       </button>
 
@@ -71,6 +71,6 @@
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
-<mat-paginator [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
+<mat-paginator class="paginator" [pageSizeOptions]="[10, 20, 30]" showFirstLastButtons></mat-paginator>
 
 <!-------------------------------------------------------------------------------------------------------------------------->
