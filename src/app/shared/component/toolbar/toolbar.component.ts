@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { AuthService} from '../../services/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-toolbar',
@@ -15,7 +16,12 @@ export class ToolbarComponent implements OnInit {
   }
 
   onLogout(): void{
-    this.authSvc.logout();
+    firebase.auth().signOut().then(function() {
+      // Sign-out successful.
+    }).catch(function(error) {
+      // An error happened.
+    });
+   // this.authSvc.logout();
   }
 
 }

@@ -3,7 +3,9 @@ import { Routes, RouterModule } from '@angular/router';
 
 
 import { PostComponent } from './components/posts/post/post.component';
-import { TableComponent } from './shared/component/table/table.component'
+
+import { RegisterComponent } from './components/register/register.component'
+
 
 
 const routes: Routes = [
@@ -30,6 +32,8 @@ const routes: Routes = [
 
 
   { path: 'modal', loadChildren: () => import('./shared/component/modal/modal.module').then(m => m.ModalModule) },
+
+  { path: 'register', component: RegisterComponent }
 
 
 ];

@@ -15,6 +15,7 @@ export class ProfileComponent implements OnInit {
   public image: FileI;
   public currentImage: string;
 
+
   constructor(private authSvc: AuthService) { }
 
   public profileForm = new FormGroup({

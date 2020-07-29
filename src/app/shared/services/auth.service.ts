@@ -1,10 +1,13 @@
 import { Injectable } from '@angular/core';
 import { UserI } from '../models/user.interface';
+
 import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { FileI } from '../models/file.interface';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators'
+import { finalize } from 'rxjs/operators';
+
+import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 
 @Injectable({
   providedIn: 'root'
@@ -16,7 +19,7 @@ export class AuthService {
   private filePath: string;
 
 
-  constructor(private afAuth: AngularFireAuth,private storage: AngularFireStorage) {
+  constructor(private afAuth: AngularFireAuth, private storage: AngularFireStorage, private afs: AngularFirestore) {
     this.userData$ = afAuth.authState;
   }
 
@@ -29,23 +32,23 @@ export class AuthService {
     this.afAuth.signOut();
   }
 
-  preSaveUserProfile(user: UserI,image: FileI):void{
-    if(image){
-      this.uploadImage(user,image);
-    }else{
+  preSaveUserProfile(user: UserI, image: FileI): void {
+    if (image) {
+      this.uploadImage(user, image);
+    } else {
       this.saveUserProfile(user);
     }
- 
+
   }
 
 
-  private uploadImage(user: UserI,image: FileI):void{
+  private uploadImage(user: UserI, image: FileI): void {
     this.filePath = `images/${image.name}`;
     const fileRef = this.storage.ref(this.filePath);
-    const task = this.storage.upload(this.filePath,image);
+    const task = this.storage.upload(this.filePath, image);
     task.snapshotChanges().pipe(
-      finalize(()=>{
-        fileRef.getDownloadURL().subscribe(urlImage =>{
+      finalize(() => {
+        fileRef.getDownloadURL().subscribe(urlImage => {
           user.photoURL = urlImage;
           this.saveUserProfile(user);
         });
@@ -60,6 +63,32 @@ export class AuthService {
       photoURL: user.photoURL
     }).then(() => console.log('User updated'))
       .catch(err => console.log('error', err));
+  }
+
+
+  //Roles
+
+
+  registerUser(email: string,password: string){
+    return new Promise ((resolve,reject) =>{
+      this.afAuth.createUserWithEmailAndPassword(email,password)
+      .then(userData$ => resolve(userData$)),
+      err =>reject(err);
+    });
+  }
+
+
+
+  private updateUserData(user) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: UserI = {
+      uid: user.uid,
+      email: user.email,
+      roles: {
+        editor: true
+      }
+    }
+    return userRef.set(data, { merge: true })
   }
 
 

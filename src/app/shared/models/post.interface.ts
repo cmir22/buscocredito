@@ -1,13 +1,16 @@
+
+
 export interface PostI {
     
-    titlePost?: String;
-    contentPost?: String;
+    titlePost?: string;
+    contentPost?: string;
     imagePost?: any;
     id?: any;
-    tagsPost?: String;
-    fileRef?: String;
-    nameUser?: String;
-    moneyPost?: String;
-    monthPost?: String;
+    tagsPost?: string;
+    fileRef?: string;
+    nameUser?: string;
+    moneyPost?: string;
+    monthPost?: string;
+    userUId?: string;
 
 }

@@ -21,6 +21,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
 
 import { ReactiveFormsModule} from '@angular/forms';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
+import { RegisterComponent } from './components/register/register.component';
 
 
 
@@ -30,6 +31,7 @@ import { ContainerAppComponent } from './components/pages/container-app/containe
     PostComponent,
     ToolbarComponent,
     ContainerAppComponent,
+    RegisterComponent,
 
 
   ],

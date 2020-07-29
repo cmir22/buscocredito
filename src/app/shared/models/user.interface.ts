@@ -1,3 +1,9 @@
+
+export interface Roles{
+    editor?: boolean;
+    admin?: boolean;
+}
+
 export interface UserI{
 
     email: string;
@@ -6,5 +12,6 @@ export interface UserI{
     photoURL?: string;
     uid?: string;
     phoneNumber?: string; 
+    roles?: Roles;
 
 }
