@@ -69,6 +69,8 @@ export class AuthService {
   //Roles
 
 
+
+  
   registerUser(email: string,password: string){
     return new Promise ((resolve,reject) =>{
       this.afAuth.createUserWithEmailAndPassword(email,password)
@@ -79,18 +81,17 @@ export class AuthService {
 
 
 
-  private updateUserData(user) {
+  public updateUserData(user) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: UserI = {
       uid: user.uid,
       email: user.email,
-      roles: {
-        editor: true
+      rol: {
+        adminRol: true
       }
     }
     return userRef.set(data, { merge: true })
   }
-
 
 
 }

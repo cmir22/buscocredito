@@ -23,23 +23,23 @@ export class LoginComponent implements OnInit {
   })
 
   ngOnInit(): void {
-  /*  const user: UserI = {
-      email: 'cruz@gmail.com',
-      password: '123456'
-    };
-    this.authSvc.loginByEmail(user);
-    */
+    /*  const user: UserI = {
+        email: 'cruz@gmail.com',
+        password: '123456'
+      };
+      this.authSvc.loginByEmail(user);
+      */
   }
 
 
 
   onLogin(form: UserI) {
     this.authSvc
-    .loginByEmail(form)
-    .then(res =>{
-      console.log('Successfuly ', res);
-      this.route.navigate(['/homeUser']);
-    })
-    .catch(err => console.log('Error', err));
+      .loginByEmail(form)
+      .then(res => {
+        console.log('Successfuly ', res);
+        this.route.navigate(['/homeUser']);
+      })
+      .catch(err => console.log('Error', err));
   }
 }

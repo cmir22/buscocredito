@@ -1,5 +1,4 @@
 
-
 export interface PostI {
     
     titlePost?: string;

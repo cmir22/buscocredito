@@ -6,7 +6,7 @@
                 <div class="card_register">
                     <div class="card">
                         <div class="card-body text-center">
-                            <form #formRegister="ngForm" (ngSubmit)="onAddUser()">
+                            <form #formRegister="ngForm" (ngSubmit)="onAddUser('','')">
                                 <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
                                 <div class="form-group">
@@ -19,11 +19,10 @@
                                         [(ngModel)]="password" required minlength="5" maxlength="10">
                                 </div>
 
-
                                 <button type="submit" 
                                     class="btn btn-lg btn-secondary btn-block">Registrar</button>
                                 <div class="form-group">
-                                    <a routerLink="/user/login" class="form-control login-user">Ya tienes una cuenta?</a>
+                                    <a routerLink="/login" class="form-control login-user">Ya tienes una cuenta?</a>
                                 </div>
 
                             </form>
