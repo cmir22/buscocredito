@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map, finalize } from 'rxjs/operators';
 import { PostI } from '../../shared/models/post.interface';
 import { FileI } from '../../shared/models/file.interface';
-import { Action } from 'rxjs/internal/scheduler/Action';
+import { UserI } from '../../shared/models/user.interface';
 import { AngularFireStorage } from '@angular/fire/storage';
 
 
@@ -14,11 +14,13 @@ import { AngularFireStorage } from '@angular/fire/storage';
 export class PostService {
 
   private postsCollection: AngularFirestoreCollection<PostI>;
+  private usersCollection: AngularFirestoreCollection<UserI>;
   private filePath: any;
   private downloadURL: Observable<string>;
 
   constructor(private afs: AngularFirestore, private storage: AngularFireStorage) {
     this.postsCollection = afs.collection<PostI>('posts');
+    this.usersCollection = afs.collection<UserI>('users');
   }
 
 
@@ -36,9 +38,27 @@ export class PostService {
       )
   }
 
+  public getAllUsers(): Observable<UserI[]> {
+    return this.postsCollection
+      .snapshotChanges()
+      .pipe(
+        map(actions =>
+          actions.map(a => {
+            const data = a.payload.doc.data() as UserI;
+            const id = a.payload.doc.id;
+            return { id, ...data };
+
+          }))
+      )
+  }
+
 
   public getOnePost(id: PostI): Observable<PostI> {
     return this.afs.doc<PostI>(`posts/${id}`).valueChanges();
+  }
+
+  public getOneUser(uid: UserI): Observable<UserI> {
+    return this.afs.doc<UserI>(`users/${uid}`).valueChanges();
   }
 
   public deletePostById(PostI) {

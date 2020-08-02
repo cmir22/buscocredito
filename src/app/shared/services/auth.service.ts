@@ -5,7 +5,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { Observable } from 'rxjs';
 import { FileI } from '../models/file.interface';
 import { AngularFireStorage } from '@angular/fire/storage';
-import { finalize } from 'rxjs/operators';
+import { finalize, map } from 'rxjs/operators';
 
 import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firestore';
 
@@ -13,23 +13,22 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
   providedIn: 'root'
 })
 export class AuthService {
-
   public userData$: Observable<firebase.User>;
 
   private filePath: string;
 
 
-  constructor(private afAuth: AngularFireAuth, private storage: AngularFireStorage, private afs: AngularFirestore) {
-    this.userData$ = afAuth.authState;
+  constructor(private afsAuth: AngularFireAuth, private storage: AngularFireStorage, private afs: AngularFirestore) {
+    this.userData$ = afsAuth.authState;
   }
 
   loginByEmail(user: UserI) {
     const { email, password } = user;
-    return this.afAuth.signInWithEmailAndPassword(email, password);
+    return this.afsAuth.signInWithEmailAndPassword(email, password);
   }
 
   logout() {
-    this.afAuth.signOut();
+    this.afsAuth.signOut();
   }
 
   preSaveUserProfile(user: UserI, image: FileI): void {
@@ -58,7 +57,7 @@ export class AuthService {
 
 
   private async saveUserProfile(user: UserI): Promise<any> {
-    (await this.afAuth.currentUser).updateProfile({
+    (await this.afsAuth.currentUser).updateProfile({
       displayName: user.displayName,
       photoURL: user.photoURL
     }).then(() => console.log('User updated'))
@@ -66,14 +65,12 @@ export class AuthService {
   }
 
 
-  //Roles
+  //R
 
 
-
-  
   registerUser(email: string,password: string){
     return new Promise ((resolve,reject) =>{
-      this.afAuth.createUserWithEmailAndPassword(email,password)
+      this.afsAuth.createUserWithEmailAndPassword(email,password)
       .then(userData$ => resolve(userData$)),
       err =>reject(err);
     });
@@ -81,17 +78,31 @@ export class AuthService {
 
 
 
-  public updateUserData(user) {
+  public updateUserData(user: UserI) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: UserI = {
       uid: user.uid,
       email: user.email,
       rol: {
-        adminRol: true
+       adminRol: true
       }
+
     }
     return userRef.set(data, { merge: true })
   }
+
+
+
+  isAuth() {
+    return this.afsAuth.authState.pipe(map(auth => auth));
+  }
+
+
+  isUserAdmin(userUid){
+    return this.afs.doc<UserI>(`users/${userUid}`).valueChanges();
+  }
+
+  
 
 
 }

@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-
-import { AuthService} from '../../services/auth.service';
 import * as firebase from 'firebase';
+
+import { AuthService } from '../../services/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
+import { UserI } from '../../models/user.interface';
 
 @Component({
   selector: 'app-toolbar',
@@ -10,18 +12,26 @@ import * as firebase from 'firebase';
 })
 export class ToolbarComponent implements OnInit {
 
-  constructor(public authSvc: AuthService) { }
+
+  constructor(public authSvc: AuthService, private authService: AuthService) { }
+
+
+  public database = firebase.database();
 
   ngOnInit(): void {
+
   }
 
-  onLogout(): void{
-    firebase.auth().signOut().then(function() {
-      // Sign-out successful.
-    }).catch(function(error) {
-      // An error happened.
+
+
+
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
     });
-   // this.authSvc.logout();
   }
+
+
 
 }
+

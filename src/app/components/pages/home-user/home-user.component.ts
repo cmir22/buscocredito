@@ -4,6 +4,7 @@ import { Component, OnInit } from '@angular/core';
 import { PostService} from '../../posts/post.service';
 import { PostI} from '../../../shared/models/post.interface';
 import { Observable } from 'rxjs';
+import { UserI } from 'src/app/shared/models/user.interface';
 
 interface creditTipe {
   value: string;
@@ -76,10 +77,13 @@ export class HomeUserComponent implements OnInit {
     ]
 */
     public posts$ : Observable<PostI[]>;
+    public users$ : Observable<UserI[]>;
   constructor(private postSvc: PostService) { }
 
   ngOnInit(): void {
     this.posts$ = this.postSvc.getAllPosts();
+    this.users$ = this.postSvc.getAllUsers();
+    
   }
 
 }

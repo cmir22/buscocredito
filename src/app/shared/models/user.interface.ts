@@ -15,5 +15,6 @@ export interface UserI{
     uid?: string;
     phoneNumber?: string; 
     rol?: Rol;
+    
 
 }

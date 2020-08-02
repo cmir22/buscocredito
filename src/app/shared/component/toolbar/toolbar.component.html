@@ -23,8 +23,7 @@
 
         <li class="nav-item form-inline my-2 my-lg-0">
             <a style="color: white;" class="nav-link " routerLink="/homeUser"
-                *ngIf="authSvc.userData$ | async; else showHome">Inicio</a>
-
+                *ngIf="authSvc.userData$ | async" >Inicio</a>
 
 
             <ng-template #showLogin>
@@ -35,15 +34,9 @@
                     routerLinkActive="active">Registrarse</a>
             </ng-template>
 
-            <ng-template #showHome>
-
-            </ng-template>
-
-
-
 
             <a style="color: white;" class="nav-link " routerLink="/profile" routerLinkActive="active"
-                *ngIf="authSvc.userData$ | async">Perfil</a>
+                *ngIf="authSvc.userData$ | async" >Perfil</a>
 
             <a style="color: white;" class="nav-link " routerLink="/about" *ngIf="authSvc.userData$ | async">Administrador</a>
 

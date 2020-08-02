@@ -3,7 +3,7 @@ import { AngularFirestoreDocument, AngularFirestore } from '@angular/fire/firest
 import {  AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
-import { UserI } from '../../shared/models/user.interface';
+//import { UserI } from '../../shared/models/user.interface';
 
 
 @Component({
@@ -17,10 +17,11 @@ export class RegisterComponent implements OnInit {
 
   public email: string = '';
   public password: string = '';
-  public rol: boolean = true;
 
   ngOnInit(): void {
   }
+
+
 
   onAddUser(email: string, pass: string){
     return new Promise((resolve, reject) => {
@@ -31,6 +32,12 @@ export class RegisterComponent implements OnInit {
       this.router.navigate([`/homeUser`]);
     }).catch(err => console.log(reject(err)))
   });
+}
+
+
+
+}
+
 
     /*
     firebase.auth().createUserWithEmailAndPassword(email, password).catch(function(error) {
@@ -44,11 +51,3 @@ export class RegisterComponent implements OnInit {
       this.router.navigate([`/homeUser`]);
     }).catch(err => console.log('err', err.message))
     */
-  
-}
-
-
-
-
-
-}

@@ -1,3 +1,5 @@
+IS ADMIN: {{isAdmin}}
+
 <form (ngSubmit)="onSaveUser(profileForm.value)" [formGroup]="profileForm">
     <mat-card>
 <img width="120px" height="120px" [src]="currentImage" >
@@ -14,6 +16,7 @@
         <mat-card-content>
 
             <mat-form-field>
+                
                 <mat-label>Nombre</mat-label>
                 <input matInput placeholder="Name" formControlName="displayName">
             </mat-form-field>
@@ -23,9 +26,16 @@
                 <input matInput placeholder="Email" formControlName="email">
             </mat-form-field>
 
-            <div class="mat-dialog-actions">
+            <mat-form-field>
+                <mat-label>Uid</mat-label>
+                <input matInput placeholder="phoneNumber" formControlName="uid">
+            </mat-form-field>
 
-                <button type="submit" value="save" mat-raised-button (click)="reloadPage()">Confirmar Cambios</button>
+     
+
+            <div class="mat-dialog-actions">
+<!--(click)="reloadPage()"-->
+                <button type="submit" value="save" mat-raised-button >Confirmar Cambios</button>
             </div>
 
         </mat-card-content>

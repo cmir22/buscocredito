@@ -4,6 +4,7 @@ import { ActivatedRoute} from '@angular/router'
 import { PostService } from '../post.service'
 import { Observable } from 'rxjs';
 import { PostI } from 'src/app/shared/models/post.interface';
+import { UserI } from 'src/app/shared/models/user.interface';
 
 
 
