@@ -83,9 +83,9 @@ export class AuthService {
     const data: UserI = {
       uid: user.uid,
       email: user.email,
-      rol: {
-       adminRol: true
-      }
+      userRol: {
+        userRol: true
+       }
 
     }
     return userRef.set(data, { merge: true })

@@ -1,7 +1,117 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <!--  <img style="margin-right: 3px;"
+<div *ngIf="isAdmin == true  ; else no">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <!--  <img style="margin-right: 3px;"
         src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/logoBuscoCredito.png?alt=media&token=60230461-6d50-4fe0-bb99-d415c4f41dbd"
         width="76" height="45" class="d-inline-block align-top" alt="" loading="lazy">
+-->
+        <a class="navbar-brand" href="/login">BuscoCredito.com</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+            aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+            <!-------------------------------------------------------------------------------------------------------------------------->
+
+            <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                <li class="nav-item active">
+                    <!--    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
+                </li>
+            </ul>
+
+            <!-------------------------------------------------------------------------------------------------------------------------->
+
+            <li class="nav-item form-inline my-2 my-lg-0">
+                <a style="color: white;" class="nav-link " routerLink="/homeUser"
+                    *ngIf="authSvc.userData$ | async">Inicio</a>
+
+
+                <ng-template #showLogin>
+                    <a style="color: white;" class="nav-link " routerLink="/login" routerLinkActive="active">Iniciar
+                        Sesion</a>
+
+                    <a style="color: white;" class="nav-link " routerLink="/register"
+                        routerLinkActive="active">Registrarse</a>
+                </ng-template>
+
+
+                <a style="color: white;" class="nav-link " routerLink="/profile" routerLinkActive="active"
+                    *ngIf="authSvc.userData$ | async">Perfil</a>
+
+                <a style="color: white;" class="nav-link " routerLink="/about"
+                    *ngIf="authSvc.userData$ | async">Administrador</a>
+
+                <a style="color: white;" class="nav-link " routerLink="/login"
+                    *ngIf="authSvc.userData$ | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>
+
+
+            </li>
+            <!-------------------------------------------------------------------------------------------------------------------------->
+
+        </div>
+    </nav>
+</div>
+
+<div *ngIf="isUser == true ; else no">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <!--  <img style="margin-right: 3px;"
+        src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/logoBuscoCredito.png?alt=media&token=60230461-6d50-4fe0-bb99-d415c4f41dbd"
+        width="76" height="45" class="d-inline-block align-top" alt="" loading="lazy">
+-->
+            <a class="navbar-brand" href="/login">BuscoCredito.com</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+                aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+                <!-------------------------------------------------------------------------------------------------------------------------->
+
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+                    <li class="nav-item active">
+                        <!--    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
+                    </li>
+                </ul>
+
+                <!-------------------------------------------------------------------------------------------------------------------------->
+
+                <li class="nav-item form-inline my-2 my-lg-0">
+                    <a style="color: white;" class="nav-link " routerLink="/homeUser"
+                        *ngIf="authSvc.userData$ | async">Inicio</a>
+
+
+                    <ng-template #showLogin>
+                        <a style="color: white;" class="nav-link " routerLink="/login" routerLinkActive="active">Iniciar
+                            Sesion</a>
+
+                        <a style="color: white;" class="nav-link " routerLink="/register"
+                            routerLinkActive="active">Registrarse</a>
+                    </ng-template>
+
+
+                    <a style="color: white;" class="nav-link " routerLink="/profile" routerLinkActive="active"
+                        *ngIf="authSvc.userData$ | async">Perfil</a>
+
+
+
+                    <a style="color: white;" class="nav-link " routerLink="/login"
+                        *ngIf="authSvc.userData$ | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>
+
+
+                </li>
+                <!-------------------------------------------------------------------------------------------------------------------------->
+
+            </div>
+        </nav>
+</div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark" #no *ngIf="isAdmin == false && isUser == false ">
+    <!--  <img style="margin-right: 3px;"
+src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/logoBuscoCredito.png?alt=media&token=60230461-6d50-4fe0-bb99-d415c4f41dbd"
+width="76" height="45" class="d-inline-block align-top" alt="" loading="lazy">
 -->
     <a class="navbar-brand" href="/login">BuscoCredito.com</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
@@ -23,7 +133,7 @@
 
         <li class="nav-item form-inline my-2 my-lg-0">
             <a style="color: white;" class="nav-link " routerLink="/homeUser"
-                *ngIf="authSvc.userData$ | async" >Inicio</a>
+                *ngIf="authSvc.userData$ | async">Inicio</a>
 
 
             <ng-template #showLogin>
@@ -36,56 +146,17 @@
 
 
             <a style="color: white;" class="nav-link " routerLink="/profile" routerLinkActive="active"
-                *ngIf="authSvc.userData$ | async" >Perfil</a>
+                *ngIf="authSvc.userData$ | async">Perfil</a>
 
-            <a style="color: white;" class="nav-link " routerLink="/about" *ngIf="authSvc.userData$ | async">Administrador</a>
+
 
             <a style="color: white;" class="nav-link " routerLink="/login"
                 *ngIf="authSvc.userData$ | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>
-        </li>
 
+
+        </li>
         <!-------------------------------------------------------------------------------------------------------------------------->
 
     </div>
 </nav>
 
-
-
-<!--
-     <mat-toolbar color="primary">
-
-  <a routerLink="/" routerLinkActive="active">PaginaWeb</a>
-
-    <a *ngIf="authSvc.userData | async; else showLogin" (click)="onLogout()">Logout</a>
-
-    <ng-template #showLogin>
-        <a routerLink="/login" routerLinkActive="active">Login</a>
-    </ng-template>
-
-
-    <a routerLink="/admin" routerLinkActive="active" *ngIf="authSvc.userData | async">Admin</a>
-
-    <a routerLink="/about" routerLinkActive="active">About</a>
-
-</mat-toolbar>
--->
-
-<!--
-<p>
-    <mat-toolbar class="toolbarColor">
-        <span class="toolbarTextColor">BuscoCredito</span>
-
-
-        <button class="bottonToolbar" mat-raised-button routerLink="/login"
-            *ngIf="authSvc.userData | async; else showLogin" (click)="onLogout()">Logout</button>
-
-        <ng-template #showLogin>
-            <button class="bottonToolbar" mat-raised-button routerLink="/login" routerLinkActive="active">Login</button>
-        </ng-template>
-
-        <button class="bottonToolbar" mat-raised-button routerLink="/about" routerLinkActive="active">About</button>
-
-    </mat-toolbar>
-</p>
-
--->

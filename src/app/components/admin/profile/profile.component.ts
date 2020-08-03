@@ -20,8 +20,10 @@ export class ProfileComponent implements OnInit {
 
   public image: FileI;
   public currentImage: string;
-  public isAdmin: any = null;
   public userUid: any = null;
+  
+  public isAdmin: any = null;
+  public isUser: any = null;
 
 
   constructor(private authSvc: AuthService) { }
@@ -30,29 +32,35 @@ export class ProfileComponent implements OnInit {
     displayName: new FormControl('',Validators.required),
     email: new FormControl({value:'',disabled: true},Validators.required),
     photoURL: new FormControl('',Validators.required),
-    uid: new FormControl('',Validators.required),
+    uid: new FormControl({value:'',disabled: true},Validators.required),
   })
 
   ngOnInit(): void {
     this.authSvc.userData$.subscribe(user => {
       this.initValuesForm(user);
-
     });
     this.getCurrentUser();
-    
+
   }
 
+  
   getCurrentUser() {
     this.authSvc.isAuth().subscribe(auth => {
       if (auth) {
         this.userUid = auth.uid;
-        this.authSvc.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({}, userRole.rol).hasOwnProperty('adminRol');
+        this.authSvc.isUserAdmin(this.userUid).subscribe(userRol => {
+          this.isUser = Object.assign({}, userRol.userRol).hasOwnProperty('userRol');
+          this.isAdmin = Object.assign({}, userRol.adminRol).hasOwnProperty('adminRol');
+          
            //this.isAdmin = true;
         })
       }
     })
   }
+
+
+
+
 
 
   reloadPage(){
@@ -77,7 +85,7 @@ export class ProfileComponent implements OnInit {
       displayName: user.displayName,
       email: user.email,
       uid: user.uid,
-      photoURL: user.photoURL
+      photoURL: user.photoURL,
     });
   }
 

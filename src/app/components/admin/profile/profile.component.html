@@ -1,6 +1,8 @@
-IS ADMIN: {{isAdmin}}
+IS User: {{isUser}}
+IS Admin: {{isAdmin}}
 
-<form (ngSubmit)="onSaveUser(profileForm.value)" [formGroup]="profileForm">
+
+<form (ngSubmit)="onSaveUser(profileForm.value)" [formGroup]="profileForm"  >
     <mat-card>
 <img width="120px" height="120px" [src]="currentImage" >
         <mat-card-header>
@@ -31,7 +33,7 @@ IS ADMIN: {{isAdmin}}
                 <input matInput placeholder="phoneNumber" formControlName="uid">
             </mat-form-field>
 
-     
+    
 
             <div class="mat-dialog-actions">
 <!--(click)="reloadPage()"-->
