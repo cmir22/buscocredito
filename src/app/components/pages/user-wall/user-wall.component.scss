@@ -1,0 +1,86 @@
+
+.crearSolicitud{
+    margin-bottom: 25px;
+    text-align: center;
+    background-color: #343a40;
+    color: white;
+    font-size: 25px;
+    margin-top: -12px;
+    width: 90%;
+    margin:  0 auto;
+    display: block;
+    margin-bottom: 15px;
+}
+
+.crearSolicitud2{
+  margin-bottom: 25px;
+    text-align: center;
+    background-color: #005727;
+    color: white;
+    font-size: 25px;
+    margin-top: -12px;
+    width: 90%;
+    margin:  0 auto;
+    display: block;
+    margin-bottom: 15px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.crearSolicitud3{
+  margin-top: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+  background-color: #343a40;
+  color: white;
+  font-size: 25px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.verCreditos{
+  color: white;
+  font-size: 35px;
+}
+
+ 
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+    margin:  1rem 1rem;
+  }
+
+  .mat-form-field{
+    font-size: 0.9rem;
+    width: 45%;
+    margin:  0 auto;
+    display: block;
+    margin-top: 0rem;
+  }
+
+  .contianer-btn-new{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin:  1rem -2rem;
+    margin-bottom: 50px;
+
+    button{
+      width: 12%;
+      color: white;
+      background: green;
+      cursor: pointer;
+    }
+  }
+
+  .solicitedCreditsButton{
+    color: transparent;
+    cursor: pointer;
+}
+
+    .solicitedCredits{
+    margin-top: 2px !important;
+    
+}
+
+

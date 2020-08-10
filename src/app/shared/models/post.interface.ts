@@ -11,5 +11,6 @@ export interface PostI {
     moneyPost?: string;
     monthPost?: string;
     userUId?: string;
+    email?: string;
 
 }

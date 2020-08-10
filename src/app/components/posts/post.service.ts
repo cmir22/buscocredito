@@ -101,7 +101,8 @@ export class PostService {
       imagePost: this.downloadURL,
       fileRef: this.filePath,
       tagsPost: post.tagsPost,
-      monthPost: post.monthPost
+      monthPost: post.monthPost,
+      email: post.email
     };
 
     if (post.id) {

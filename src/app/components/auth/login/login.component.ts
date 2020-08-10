@@ -34,7 +34,7 @@ export class LoginComponent implements OnInit {
       if (auth) {
         this.userUid = auth.uid;
         this.authSvc.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({}, userRole.rol).hasOwnProperty('userRol');
+          this.isAdmin = Object.assign({}, userRole.userRol).hasOwnProperty('userRol');
            //this.isAdmin = true;
            if(this.isAdmin == true){
             this.route.navigate(['/homeUser']);

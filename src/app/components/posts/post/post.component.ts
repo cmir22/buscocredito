@@ -15,18 +15,7 @@ import { UserI } from 'src/app/shared/models/user.interface';
 })
 export class PostComponent implements OnInit {
 
- /* public post:{
-    id: string;
-    titlePost: string;
-    contentPost: string;
-    imagePost: string;
-  }={
-    id: '1',
-    titlePost: 'Post one',
-    contentPost: 'Hola Mundo',
-    imagePost: 'https://picsum.photos/id/237/200/300'
-  };
-*/
+
   public post$ : Observable<PostI>;
   constructor(private route: ActivatedRoute, private postSvc:PostService) { }
 
