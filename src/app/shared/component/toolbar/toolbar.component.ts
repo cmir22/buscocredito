@@ -38,7 +38,7 @@ export class ToolbarComponent implements OnInit {
         this.authSvc.isUserAdmin(this.userUid).subscribe(userRol => {
           this.isUser = Object.assign({}, userRol.userRol).hasOwnProperty('userRol');
           this.isAdmin = Object.assign({}, userRol.adminRol).hasOwnProperty('adminRol');
-          
+          this.isChild = Object.assign({}, userRol.childRol).hasOwnProperty('childRol');
            //this.isAdmin = true;
         })
       }

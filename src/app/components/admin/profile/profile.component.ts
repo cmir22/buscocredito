@@ -24,6 +24,7 @@ export class ProfileComponent implements OnInit {
   
   public isAdmin: any = null;
   public isUser: any = null;
+  public isClient: any = null;
 
 
   constructor(private authSvc: AuthService) { }
@@ -51,7 +52,7 @@ export class ProfileComponent implements OnInit {
         this.authSvc.isUserAdmin(this.userUid).subscribe(userRol => {
           this.isUser = Object.assign({}, userRol.userRol).hasOwnProperty('userRol');
           this.isAdmin = Object.assign({}, userRol.adminRol).hasOwnProperty('adminRol');
-          
+          this.isClient = Object.assign({}, userRol.childRol).hasOwnProperty('childRol');
            //this.isAdmin = true;
         })
       }

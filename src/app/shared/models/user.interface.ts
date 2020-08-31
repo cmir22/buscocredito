@@ -7,6 +7,10 @@ export interface adminRol{
     adminRol?: boolean;   
 }
 
+export interface childRol{
+    childRol?: boolean;   
+}
+
 export interface UserI{
 
     email: string;
@@ -17,6 +21,7 @@ export interface UserI{
     phoneNumber?: string; 
     userRol?: userRol;
     adminRol?: adminRol;
+    childRol?: childRol;
     
 
 }

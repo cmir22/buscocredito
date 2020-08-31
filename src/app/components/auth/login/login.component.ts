@@ -6,6 +6,7 @@ import { UserI } from '../../../shared/models/user.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Router } from '@angular/router'
 import { User } from 'firebase';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-login',
@@ -27,19 +28,30 @@ export class LoginComponent implements OnInit {
 
 
   public isAdmin: any = null;
+  public isUser: any = null;
+  public isChild: any = null;
   public userUid: any = null;
 
    private getCurrentUser() {
     this.authSvc.isAuth().subscribe(auth => {
       if (auth) {
         this.userUid = auth.uid;
-        this.authSvc.isUserAdmin(this.userUid).subscribe(userRole => {
-          this.isAdmin = Object.assign({}, userRole.userRol).hasOwnProperty('userRol');
+        this.authSvc.isUserAdmin(this.userUid).subscribe(userRol => {
+          this.isUser = Object.assign({}, userRol.userRol).hasOwnProperty('userRol');
+          this.isAdmin = Object.assign({}, userRol.adminRol).hasOwnProperty('adminRol');
+          this.isChild = Object.assign({}, userRol.childRol).hasOwnProperty('childRol');
            //this.isAdmin = true;
            if(this.isAdmin == true){
+            this.route.navigate(['/about']);
+           }else if(this.isUser == true){
+            this.route.navigate(['/userWall']);
+           }else if(this.isChild == true){
             this.route.navigate(['/homeUser']);
            }else{
-            this.route.navigate(['/about']);
+            firebase.auth().signOut().then(function () {
+            }).catch(function (error) {
+            });
+            this.route.navigate(['/login']);
            }
         })
       }

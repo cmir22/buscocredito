@@ -36,11 +36,24 @@
   font-size: 25px;
   cursor: pointer;
   border-radius: 5px;
+  
 }
 
 .verCreditos{
   color: white;
   font-size: 35px;
+  
+}
+
+.solicitedCreditsButton{
+  color: transparent;
+  cursor: pointer;
+}
+
+table{
+  width: 85%;
+  margin:  0rem 0rem;
+  text-align: center;
 }
 
  
@@ -58,29 +71,26 @@
     margin-top: 0rem;
   }
 
-  .contianer-btn-new{
-    display: flex;
-    justify-content: flex-end;
-    width: 100%;
-    margin:  1rem -2rem;
-    margin-bottom: 50px;
-
-    button{
-      width: 12%;
-      color: white;
-      background: green;
-      cursor: pointer;
-    }
+  button{
+    width: 12%;
+    color: white;
+    background: white;
+    cursor: pointer;
   }
 
-  .solicitedCreditsButton{
-    color: transparent;
-    cursor: pointer;
-}
 
-    .solicitedCredits{
+   .solicitedCredits{
     margin-top: 2px !important;
-    
 }
 
+
+td{
+  text-align: center;
+  margin-left: 25px;
+}
+
+._ngcontent-efh-c183{
+  text-align: center;
+  margin-left: 25px;
+}
 
