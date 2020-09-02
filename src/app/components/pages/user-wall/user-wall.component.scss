@@ -32,44 +32,34 @@
   margin-bottom: 25px;
   text-align: center;
   background-color: #343a40;
-  color: white;
-  font-size: 25px;
-  cursor: pointer;
+  color:transparent;
+  font-size: 15px;
   border-radius: 5px;
   
-}
-
 .verCreditos{
   color: white;
   font-size: 35px;
   
 }
 
-.solicitedCreditsButton{
-  color: transparent;
+ .solicitedCreditsButton{
   cursor: pointer;
+  color: transparent;
 }
 
-table{
-  width: 85%;
-  margin:  0rem 0rem;
-  text-align: center;
 }
 
- 
-  .mat-form-field {
-    font-size: 14px;
-    width: 100%;
-    margin:  1rem 1rem;
-  }
+table {
+  width: 100%;
+}
 
-  .mat-form-field{
-    font-size: 0.9rem;
-    width: 45%;
-    margin:  0 auto;
-    display: block;
-    margin-top: 0rem;
-  }
+.mat-form-field {
+  font-size: 10px;
+  width: 100%;
+  color: transparent;
+}
+
+
 
   button{
     width: 12%;

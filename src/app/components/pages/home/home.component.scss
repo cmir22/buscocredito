@@ -58,7 +58,7 @@ main .row {
 main .sidebar {
 	display: table-cell;
 	width: 200px;
-	background: #383435;
+	background: #c9c9c9;
 	color: #aaa;
 	padding-top: 20px;
 }
@@ -74,3 +74,40 @@ main .content {
     margin-top: 60px !important;
     border-radius: 50%;
 }
+
+.crearSolicitud3{
+    margin-top: 12px;
+    margin-bottom: 25px;
+    text-align: center;
+    background-color: #343a40;
+    color:transparent;
+    font-size: 15px;
+    border-radius: 5px;
+    
+.verCreditos{
+    color: white;
+    font-size: 35px;
+    
+  }
+  
+   .solicitedCreditsButton{
+    cursor: pointer;
+    color: transparent;
+ }
+
+  }
+ 
+  .creditosSolicitados{
+      margin-top: 50px;
+  }
+
+
+  table {
+    width: 100%;
+  }
+  
+  .mat-form-field {
+    font-size: 10px;
+    width: 100%;
+    color: transparent;
+  }

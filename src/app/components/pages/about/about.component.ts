@@ -48,9 +48,7 @@ export class AboutComponent implements OnInit, AfterViewInit {
   ngOnInit(): void {
     this.postSvc.getAllPosts().subscribe(posts => (this.dataSource.data = posts));
 
-    this.authSvc.userData$.subscribe(user => {
-      this.initValuesForm(user);
-    });
+
     
     
   }

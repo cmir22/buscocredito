@@ -1,7 +1,7 @@
 <!-------------------------------------------------------------------------------------------------------------------------->
 <mat-form-field [formGroup]="newPostForm">
   <mat-label>Busqueda</mat-label>
-  <input matInput (click)="applyFilter($event)" #input formControlName="email">
+  <input matInput (keyup)="applyFilter($event)" #input formControlName="email">
 </mat-form-field>
 
 <!-------------------------------------------------------------------------------------------------------------------------->

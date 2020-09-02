@@ -139,6 +139,8 @@ export class UserWallComponent implements OnInit, AfterViewInit {
   }
 
 
+ 
+
   public openDialogNew(post?: PostI): void {
     const config = {
       data: {

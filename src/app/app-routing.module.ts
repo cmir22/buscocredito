@@ -16,7 +16,7 @@ const routes: Routes = [
   // USE CHILDREN
   { path: '', redirectTo: '/login', pathMatch: 'full' },
 
-  //{ path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
+  { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
   { path: 'post/:id', component: PostComponent },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
 
@@ -39,7 +39,9 @@ const routes: Routes = [
   { path: 'register', component: RegisterComponent },
 
 
-  { path: 'userWall', loadChildren: () => import('./components/pages/user-wall/user-wall.module').then(m => m.UserWallModule) }
+  { path: 'userWall', loadChildren: () => import('./components/pages/user-wall/user-wall.module').then(m => m.UserWallModule) },
+
+
 
 
 ];

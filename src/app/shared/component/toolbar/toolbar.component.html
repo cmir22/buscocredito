@@ -25,7 +25,7 @@
             <!-------------------------------------------------------------------------------------------------------------------------->
 
             <li class="nav-item form-inline my-2 my-lg-0">
-                <a style="color: white;" class="nav-link " routerLink="/homeUser"
+                <a style="color: white;" class="nav-link " routerLink="/home"
                     *ngIf="authSvc.userData$ | async">Inicio</a>
 
 
@@ -41,9 +41,9 @@
                 <a style="color: white;" class="nav-link " routerLink="/profile" routerLinkActive="active"
                     *ngIf="authSvc.userData$ | async">Perfil</a>
 
-                <a style="color: white;" class="nav-link " routerLink="/about"
+             <!-- <a style="color: white;" class="nav-link " routerLink="/about"
                     *ngIf="authSvc.userData$ | async">Administrador</a>
-
+-->  
                 <a style="color: white;" class="nav-link " routerLink="/login"
                     *ngIf="authSvc.userData$ | async; else showLogin" (click)="onLogout()">Cerrar Sesion</a>
 
