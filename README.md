@@ -43,7 +43,7 @@ ng g s components/posts/post --flat
 ng g m components/pages/homeUser -m=app --route homeUser
 
 
-# DEPLOY
+# DEPLOYEDD
 
 firebase login
 ng build --prod
