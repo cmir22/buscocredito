@@ -1,80 +1,102 @@
-<!------------------------------------------------------------------------------------------------------------------------
-<div class="crearSolicitud contianer-btn-new" (click)="onNewPost()">
-    <button mat-stroked-button>
-        <mat-icon>note_add</mat-icon>&nbsp; Nueva Solicitud
-    </button>
-</div>
--->
+<!-------------------------------------------------------------------------------------------------------------------------->
 
-
-<mat-card class="crearSolicitud2" (click)="onNewPost()">Solicitar Credito</mat-card>
-
-<mat-card class="crearSolicitud">Creditos Solicitados</mat-card>
+<mat-card class="welcomeText">
+    <h1 class="welcomeText">Bienvenido</h1>
+</mat-card>
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
-<mat-form-field [formGroup]="newPostForm" class="crearSolicitud3">
-    <mat-label class="verCreditos">Mis Creditos</mat-label>
-    <input  readonly class="solicitedCreditsButton" matInput (click)="applyFilter($event);myFunction()" #input
-        formControlName="email">
-</mat-form-field>
+<img src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/Presentable%20Green.jpg?alt=media&token=292107d7-4470-423a-a34b-f2c347462744"
+    class="img-fluid" alt="Responsive image">
 
 <!-------------------------------------------------------------------------------------------------------------------------->
-<div id="myDIV">
-<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
 
-    <!--  -->
-    <ng-container matColumnDef="nameUser">
-        <th mat-header-cell *matHeaderCellDef> Nombre </th>
-        <td mat-cell *matCellDef="let element">{{element.nameUser}}</td>
-    </ng-container>
+<mat-card class="welcomeText" style="margin-top: 20px;">
+    <div class="jumbotron" style="background-color: #F2F2F2; ">
+        <div class="container">
+            <h3>Solicitar un credito jamas fue tan Facil.</h3>
+            <mat-card class="crearSolicitud" (click)="onNewPost()">Solicitar Credito</mat-card>
+        </div>
+    </div>
+</mat-card>
 
-    <!--mat-sort-header  -->
-    <ng-container matColumnDef="moneyPost">
-        <th mat-header-cell *matHeaderCellDef> Dinero </th>
-        <td mat-cell *matCellDef="let element"> $ {{element.moneyPost}} </td>
-    </ng-container>
+<!-------------------------------------------------------------------------------------------------------------------------->
 
-    <!--  -->
-    <ng-container matColumnDef="tagsPost">
-        <th mat-header-cell *matHeaderCellDef> Tipo de Prestamo </th>
-        <td mat-cell *matCellDef="let element"> {{element.tagsPost}} </td>
-    </ng-container>
+<mat-card class="welcomeText" style="margin-top: 20px;">
+    <div class="jumbotron" style="background-color: #F2F2F2;">
+        <div class="container">
 
-    <!--  -->
-    <ng-container matColumnDef="monthPost">
-        <th mat-header-cell *matHeaderCellDef> Meses </th>
-        <td mat-cell *matCellDef="let element"> {{element.monthPost}} </td>
-    </ng-container>
+            <!-------------------------------------------------------------------------------------------------------------------------->
 
-    <!-------------------------------------------------------------------------------------------------------------------------->
+            <mat-form-field [formGroup]="newPostForm" class="buttonVerMisCreditos">
+                <mat-label class="verCreditosText">Ver Mis Creditos</mat-label>
+                <input readonly class="solicitedCreditsButton" matInput (click)="applyFilter($event);myFunction()"
+                    #input formControlName="email">
+            </mat-form-field>
 
-    <ng-container matColumnDef="actions">
-        <th mat-header-cell *matHeaderCellDef> </th>
-        <td mat-cell *matCellDef="let element">
+            <!-------------------------------------------------------------------------------------------------------------------------->
 
-            <!--
-            <button mat-stroked-button (click)="onEditPost(element)">
-                <mat-icon>edit</mat-icon>
-            </button>
--->
-            <button mat-stroked-button color="warn" (click)="onDeletePost(element)">
-                <mat-icon>delete</mat-icon>
-            </button>
+            <div id="myDIV">
+                <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
 
-        </td>
-    </ng-container>
+                    <!--  -->
+                    <ng-container matColumnDef="nameUser">
+                        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+                        <td mat-cell *matCellDef="let element">{{element.nameUser}}</td>
+                    </ng-container>
 
-    <!-------------------------------------------------------------------------------------------------------------------------->
-    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+                    <!--mat-sort-header  -->
+                    <ng-container matColumnDef="moneyPost">
+                        <th mat-header-cell *matHeaderCellDef> Dinero </th>
+                        <td mat-cell *matCellDef="let element"> $ {{element.moneyPost}} </td>
+                    </ng-container>
 
-    <!-------------------------------------------------------------------------------------------------------------------------->
-    <!-- NOT FOUND. -->
-    <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="4">No Ha Solicitado Creditos</td>
-    </tr>
-    <!-------------------------------------------------------------------------------------------------------------------------->
-</table>
-</div>
+                    <!--  -->
+                    <ng-container matColumnDef="tagsPost">
+                        <th mat-header-cell *matHeaderCellDef> Tipo de Prestamo </th>
+                        <td mat-cell *matCellDef="let element"> {{element.tagsPost}} </td>
+                    </ng-container>
+
+                    <!--  -->
+                    <ng-container matColumnDef="monthPost">
+                        <th mat-header-cell *matHeaderCellDef> Meses </th>
+                        <td mat-cell *matCellDef="let element"> {{element.monthPost}} </td>
+                    </ng-container>
+
+                    <!-------------------------------------------------------------------------------------------------------------------------->
+
+                    <ng-container matColumnDef="actions">
+                        <th mat-header-cell *matHeaderCellDef> Acciones </th>
+                        <td mat-cell *matCellDef="let element">
+
+
+                            <button mat-stroked-button color="warn" (click)="onDeletePost(element)">
+                                <mat-icon>delete</mat-icon>
+                            </button>
+
+                        </td>
+                    </ng-container>
+
+                    <!-------------------------------------------------------------------------------------------------------------------------->
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+                    <!-------------------------------------------------------------------------------------------------------------------------->
+                    <!-- NOT FOUND. -->
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No Ha Solicitado Creditos</td>
+                    </tr>
+
+                    <!-------------------------------------------------------------------------------------------------------------------------->
+
+                </table>
+            </div>
+
+            <!-------------------------------------------------------------------------------------------------------------------------->
+
+        </div>
+    </div>
+</mat-card>
 <!-------------------------------------------------------------------------------------------------------------------------->

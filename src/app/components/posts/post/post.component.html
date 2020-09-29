@@ -2,7 +2,7 @@
 
     <mat-card class="post-card">
         <mat-card-header class="nameTitle">
-            <mat-card-title  >
+            <mat-card-title>
                 <h1 style="font-size: 50px;">
                     {{post.nameUser}}
                 </h1>
@@ -14,7 +14,7 @@
         <img matCardImage [src]="post.imagePost">
 
         <mat-card-content>
-            
+
             <div class="infoCards">
 
                 <div>
@@ -25,7 +25,11 @@
                     <button class="infoCardButtonMoney" mat-flat-button disabled>${{post.moneyPost}}</button>
 
                     <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
+ 
+
                 </div>
+
+                
 
             </div>
 

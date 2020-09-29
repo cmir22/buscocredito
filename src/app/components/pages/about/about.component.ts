@@ -19,13 +19,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 
 
 
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
 
 @Component({
   selector: 'app-about',

@@ -1,20 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
-import { PostService} from '../../posts/post.service';
-import { PostI} from '../../../shared/models/post.interface';
+import { PostService } from '../../posts/post.service';
+import { PostI } from '../../../shared/models/post.interface';
 import { Observable } from 'rxjs';
 
 
 import { UserI } from 'src/app/shared/models/user.interface';
 import { NewPostComponent } from '../../posts/new-post/new-post.component'
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
+import { importExpr } from '@angular/compiler/src/output/output_ast';
 
+import { NewWorkerComponent} from '../../../new-worker/new-worker.component';
 
 
 interface creditTipe {
@@ -38,40 +40,73 @@ export class HomeComponent implements OnInit {
 
   constructor(private postSvc: PostService, public dialog: MatDialog, private route: ActivatedRoute, private authSvc: AuthService) { }
 
-  displayedColumns: string[] = ['nameUser', 'moneyPost', 'monthPost', 'tagsPost', 'actions'];
+  //displayedColumns: string[] = ['nameUser', 'moneyPost', 'monthPost', 'tagsPost', 'actions'];
+  displayedColumns: string[] = ['nameUser', 'moneyPost', 'tagsPost', 'monthPost', 'actions'];
   dataSource = new MatTableDataSource();
+  dataSource2 = new MatTableDataSource();
 
   public posts$: Observable<PostI[]>;
   public users$: Observable<UserI[]>;
 
+  //--------GET POST--------------------------------------------------
 
   onNewPost() {
     this.openDialogNew();
     //console.log("Nueva Solicitud")
   }
 
-   myFunction() {
-    var x = document.getElementById("myDIV");
-    if (x.style.display === "none") {
-      x.style.display = "block";
+  //--------GET POST--------------------------------------------------
+
+  DisplayTableCredits() {
+
+    var divWorkers = document.getElementById("divWorkers");
+    var divCredits = document.getElementById("divCredits");
+
+
+    if (divCredits.style.display == "none") {
+      divCredits.style.display = "block";
     } else {
-      x.style.display = "none";
+      divCredits.style.display = "none";
     }
+
   }
 
 
+  DisplayTableWorkers() {
+
+    var divWorkers = document.getElementById("divWorkers");
+    var divCredits = document.getElementById("divCredits");
+
+
+    if (divWorkers.style.display == "none") {
+      divWorkers.style.display = "block";
+    } else {
+      divWorkers.style.display = "none";
+    }
+
+
+  }
+
+  //----------------------------------------------------------
 
   ngOnInit(): void {
-    this.posts$ = this.postSvc.getAllPosts();
-    this.users$ = this.postSvc.getAllUsers();
-    this.postSvc.getAllPosts().subscribe(posts => (this.dataSource.data = posts));
 
+    //--------GET POST--------------------------------------------------
+
+    this.posts$ = this.postSvc.getAllPosts();
+    this.postSvc.getAllPosts().subscribe(posts => (this.dataSource2.data = posts));
+
+    //--------GET USERS--------------------------------------------------
+    this.users$ = this.postSvc.getAllUsers();
+    this.postSvc.getAllUsers().subscribe(users => (this.dataSource.data = users));
+
+    //Inicialice Values-------------------------------------------------
     this.authSvc.userData$.subscribe(user => {
       this.initValuesForm(user);
-
     });
-    this.myFunction()
 
+    this.DisplayTableWorkers();
+    this.DisplayTableCredits();
 
   }
 
@@ -85,7 +120,15 @@ export class HomeComponent implements OnInit {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
+  applyFilter2(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource2.filter = filterValue.trim().toLowerCase();
+  }
+
+
+
   //----------------------------------------------------------
+
   public newPostForm = new FormGroup({
     email: new FormControl('', Validators.required),
   });
@@ -101,10 +144,13 @@ export class HomeComponent implements OnInit {
   }
 
   //----------------------------------------------------------
+
   onEditPost(post: PostI) {
     console.log('Edit post', post);
     this.openDialog(post);
   }
+
+  //----------------------------------------------------------
 
   onDeletePost(post: PostI) {
     console.log('Delete post', post);
@@ -131,6 +177,7 @@ export class HomeComponent implements OnInit {
 
   }
 
+  //----------------------------------------------------------
 
   public openDialog(post?: PostI): void {
     const config = {
@@ -145,6 +192,7 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  //----------------------------------------------------------
 
   public openDialogNew(post?: PostI): void {
     const config = {
@@ -158,5 +206,18 @@ export class HomeComponent implements OnInit {
       console.log('Dialog result ${result}');
     });
   }
+
+  //----------------------------------------------------------
+
+
+  openDialogRegister() {
+
+    this.dialog.open(NewWorkerComponent,{
+      width: '550px',
+      height: '520px',
+    });
+
+}
+
 
 }

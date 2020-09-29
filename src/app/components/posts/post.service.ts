@@ -39,7 +39,7 @@ export class PostService {
   }
 
   public getAllUsers(): Observable<UserI[]> {
-    return this.postsCollection
+    return this.usersCollection
       .snapshotChanges()
       .pipe(
         map(actions =>

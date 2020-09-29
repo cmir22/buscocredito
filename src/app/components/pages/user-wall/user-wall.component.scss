@@ -1,45 +1,39 @@
+.welcomeText {
+  text-align: center;
+  background: #F2F2F2;
 
+
+}
 .crearSolicitud{
-    margin-bottom: 25px;
-    text-align: center;
-    background-color: #343a40;
-    color: white;
-    font-size: 25px;
-    margin-top: -12px;
-    width: 90%;
-    margin:  0 auto;
-    display: block;
-    margin-bottom: 15px;
-}
-
-.crearSolicitud2{
   margin-bottom: 25px;
-    text-align: center;
-    background-color: #005727;
-    color: white;
-    font-size: 25px;
-    margin-top: -12px;
-    width: 90%;
-    margin:  0 auto;
-    display: block;
-    margin-bottom: 15px;
-    cursor: pointer;
-    margin-top: 15px;
+  text-align: center;
+  background-color: #85A663;
+  color: white;
+  font-size: 25px;
+  margin-top: -12px;
+  width: 90%;
+  margin:  0 auto;
+  display: block;
+  margin-bottom: 15px;
+  cursor: pointer;
+  margin-top: 15px;
 }
 
-.crearSolicitud3{
+.buttonVerMisCreditos{
   margin-top: 12px;
   margin-bottom: 25px;
   text-align: center;
-  background-color: #343a40;
+  background-color:#0D0D0D;
   color:transparent;
   font-size: 15px;
   border-radius: 5px;
+  width: 90% !important;
+
   
-.verCreditos{
+.verCreditosText{
   color: white;
   font-size: 35px;
-  
+
 }
 
  .solicitedCreditsButton{
@@ -50,7 +44,8 @@
 }
 
 table {
-  width: 100%;
+  width: 125%;
+  margin-left: -38px;
 }
 
 .mat-form-field {
@@ -59,8 +54,6 @@ table {
   color: transparent;
 }
 
-
-
   button{
     width: 12%;
     color: white;
@@ -68,19 +61,13 @@ table {
     cursor: pointer;
   }
 
-
-   .solicitedCredits{
-    margin-top: 2px !important;
-}
-
-
-td{
-  text-align: center;
-  margin-left: 25px;
-}
-
 ._ngcontent-efh-c183{
   text-align: center;
   margin-left: 25px;
 }
 
+
+.jumbotron{
+  text-align: center;
+  
+}

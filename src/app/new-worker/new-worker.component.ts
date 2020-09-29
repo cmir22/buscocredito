@@ -1,18 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFirestore } from '@angular/fire/firestore';
-import {  AuthService } from '../../shared/services/auth.service';
+import {  AuthService } from '../shared/services/auth.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
-//import { UserI } from '../../shared/models/user.interface';
-
-
 @Component({
-  selector: 'app-register',
-  templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  selector: 'app-new-worker',
+  templateUrl: './new-worker.component.html',
+  styleUrls: ['./new-worker.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class NewWorkerComponent implements OnInit {
 
   constructor(private router: Router,private authService: AuthService,private afs: AngularFirestore) { }
 
@@ -29,13 +26,11 @@ export class RegisterComponent implements OnInit {
     firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
     .then(userData => {
       resolve(userData),
-      this.authService.updateUserData(userData.user)
-      this.router.navigate([`/userWall`]);
+      this.authService.updateUserDataWorker(userData.user)
     }).catch(err => console.log(reject(err)))
   });
 }
 
 
+
 }
-
-

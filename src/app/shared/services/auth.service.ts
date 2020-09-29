@@ -91,6 +91,19 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
+  public updateUserDataWorker(user: UserI) {
+    const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
+    const data: UserI = {
+      uid: user.uid,
+      email: user.email,
+      childRol: {
+        childRol: true
+       }
+
+    }
+    return userRef.set(data, { merge: true })
+  }
+
 
 
   isAuth() {

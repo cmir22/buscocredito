@@ -58,9 +58,12 @@ main .row {
 main .sidebar {
 	display: table-cell;
 	width: 200px;
-	background: #c9c9c9;
+	background:#BFBFBF;
 	color: #aaa;
-	padding-top: 20px;
+    padding-top: 20px;
+    -webkit-box-shadow: 18px 0px 12px -15px rgba(0,0,0,0.23);
+-moz-box-shadow: 18px 0px 12px -15px rgba(0,0,0,0.23);
+box-shadow: 18px 0px 12px -15px rgba(0,0,0,0.23);
 }
 
 main .content {
@@ -79,7 +82,7 @@ main .content {
     margin-top: 12px;
     margin-bottom: 25px;
     text-align: center;
-    background-color: #343a40;
+    background-color:black;
     color:transparent;
     font-size: 15px;
     border-radius: 5px;
@@ -99,15 +102,37 @@ main .content {
  
   .creditosSolicitados{
       margin-top: 50px;
+      width: 95%;
+      text-align: center;
+      margin-left: 35px;
+      background-color: #292b2c;
+      color: white;
+      margin-bottom: 80px;
   }
 
 
-  table {
-    width: 100%;
+  table, .paginator{
+    width: 90%;
+    margin:  1rem 5rem;
   }
   
   .mat-form-field {
     font-size: 10px;
     width: 100%;
     color: transparent;
+  }
+
+  .contianer-btn-new{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    margin:  1rem -2rem;
+    margin-top: -50px;
+
+    button{
+      width: 12%;
+      color: white;
+      background: green;
+      cursor: pointer;
+    }
   }
