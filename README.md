@@ -49,3 +49,7 @@ firebase login
 ng build --prod
 firebase init
 firebase deploy
+
+# Install nodes
+
+npm install --save-dev @angular-devkit/build-angular

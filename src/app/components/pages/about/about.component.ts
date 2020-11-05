@@ -3,47 +3,48 @@ import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material/sort';
 import { MatPaginator } from '@angular/material/paginator';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { PostService } from '../../posts/post.service'
+import { PostService } from '../../posts/post.service';
 import { PostI } from 'src/app/shared/models/post.interface';
 
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
 
-import { EditPostComponent} from '../../posts/edit-post/edit-post.component'
+import { EditPostComponent } from '../../posts/edit-post/edit-post.component';
 
-import { NewPostComponent } from '../../posts/new-post/new-post.component'
+import { NewPostComponent } from '../../posts/new-post/new-post.component';
 import { ModalComponent } from '../../../shared/component/modal/modal.component';
 import { ModalModule } from 'src/app/shared/component/modal/modal.module';
 import { UserI } from 'src/app/shared/models/user.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
 
-
-
-
 @Component({
   selector: 'app-about',
   templateUrl: './about.component.html',
-  styleUrls: ['./about.component.scss']
+  styleUrls: ['./about.component.scss'],
 })
 export class AboutComponent implements OnInit, AfterViewInit {
-
-  
-
-  displayedColumns: string[] = ['nameUser', 'moneyPost', 'monthPost', 'tagsPost', 'actions'];
+  displayedColumns: string[] = [
+    'nameUser',
+    'moneyPost',
+    'monthPost',
+    'tagsPost',
+    'actions',
+  ];
   dataSource = new MatTableDataSource();
-
 
   @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
-  constructor(private postSvc: PostService, public dialog: MatDialog,private authSvc: AuthService) { }
+  constructor(
+    private postSvc: PostService,
+    public dialog: MatDialog,
+    private authSvc: AuthService
+  ) {}
 
   ngOnInit(): void {
-    this.postSvc.getAllPosts().subscribe(posts => (this.dataSource.data = posts));
-
-
-    
-    
+    this.postSvc
+      .getAllPosts()
+      .subscribe((posts) => (this.dataSource.data = posts));
   }
 
   ngAfterViewInit() {
@@ -51,15 +52,13 @@ export class AboutComponent implements OnInit, AfterViewInit {
     this.dataSource.sort = this.sort;
   }
 
-
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-//----------------------------------------------------------
+  //----------------------------------------------------------
   public newPostForm = new FormGroup({
-
     email: new FormControl('', Validators.required),
   });
 
@@ -67,13 +66,12 @@ export class AboutComponent implements OnInit, AfterViewInit {
     this.newPostForm.patchValue({
       email: user.email,
     });
-   
   }
 
-//----------------------------------------------------------
+  //----------------------------------------------------------
   onEditPost(post: PostI) {
     console.log('Edit post', post);
-    this.openDialog(post); 
+    this.openDialog(post);
   }
 
   onDeletePost(post: PostI) {
@@ -86,19 +84,21 @@ export class AboutComponent implements OnInit, AfterViewInit {
       showCancelButton: true,
       confirmButtonColor: 'black',
       cancelButtonColor: 'red',
-      confirmButtonText: 'Si, Acepto'
-    }).then(result => {
+      confirmButtonText: 'Si, Acepto',
+    }).then((result) => {
       if (result.value) {
         // Desea Borra
-        this.postSvc.deletePostById(post).then(() => {
-          Swal.fire('Borrado', 'El post ha sido Borrado', 'success');
-        }).catch(() => {
-          Swal.fire('Error!', 'Ha existido un eror', 'error');
-        });
-        //console.log('Borrar');  
+        this.postSvc
+          .deletePostById(post)
+          .then(() => {
+            Swal.fire('Borrado', 'El post ha sido Borrado', 'success');
+          })
+          .catch(() => {
+            Swal.fire('Error!', 'Ha existido un eror', 'error');
+          });
+        //console.log('Borrar');
       }
-    })
-
+    });
   }
 
   onNewPost() {
@@ -110,33 +110,25 @@ export class AboutComponent implements OnInit, AfterViewInit {
     const config = {
       data: {
         message: post ? 'Editar Post' : 'New Post',
-        content: post
-      }
+        content: post,
+      },
     };
-    const dialogRef = this.dialog.open(ModalComponent,config);
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(ModalComponent, config);
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog result ${result}');
     });
   }
-
 
   public openDialogNew(post?: PostI): void {
     const config = {
       data: {
         message: post ? 'Edit Post' : 'New Post',
-        content: post
-      }
+        content: post,
+      },
     };
-    const dialogRef = this.dialog.open(NewPostComponent,config);
-    dialogRef.afterClosed().subscribe(result => {
+    const dialogRef = this.dialog.open(NewPostComponent, config);
+    dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog result ${result}');
     });
   }
-
-
-
-
-
-
-
 }
