@@ -23,6 +23,7 @@ import { ReactiveFormsModule} from '@angular/forms';
 import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
 import { RegisterComponent } from './components/register/register.component';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
+import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
 
 
 
@@ -34,6 +35,7 @@ import { NewWorkerComponent } from './new-worker/new-worker.component';
     ContainerAppComponent,
     RegisterComponent,
     NewWorkerComponent,
+    WelcomeHomeComponent,
 
 
   ],

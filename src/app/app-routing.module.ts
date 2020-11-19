@@ -8,6 +8,7 @@ import { RegisterComponent } from './components/register/register.component'
 
 import { HomeComponent } from './components/pages/home/home.component'
 import { HomeUserComponent } from './components/pages/home-user/home-user.component';
+import { WelcomeHomeComponent} from './welcome-home/welcome-home.component'
 
 
 
@@ -19,14 +20,14 @@ const routes: Routes = [
 
   { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
   { path: 'post/:id', component: PostComponent },
-  { path: 'hola', component: HomeUserComponent },
+ { path: 'user', component: HomeUserComponent },
   { path: 'about', loadChildren: () => import('./components/pages/about/about.module').then(m => m.AboutModule) },
 
  // { path: 'admin', loadChildren: () => import('./components/admin/admin.module').then(m => m.AdminModule) },
 
   { path: 'login', loadChildren: () => import('./components/auth/login/login.module').then(m => m.LoginModule) },
 
-  { path: 'homeUser', loadChildren: () => import('./components/pages/home-user/home-user.module').then(m => m.HomeUserModule) },
+ // { path: 'homeUser', loadChildren: () => import('./components/pages/home-user/home-user.module').then(m => m.HomeUserModule) },
 
 
   { path: 'profile', loadChildren: () => import('./components/admin/profile/profile.module').then(m => m.ProfileModule) },
@@ -43,7 +44,7 @@ const routes: Routes = [
 
   { path: 'userWall', loadChildren: () => import('./components/pages/user-wall/user-wall.module').then(m => m.UserWallModule) },
 
-
+  {path: 'welcome',component: WelcomeHomeComponent}
 
 
 ];

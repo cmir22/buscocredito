@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit } from '@angular/core';
 
 import { AuthService } from '../../../shared/services/auth.service';
 import { UserI } from '../../../shared/models/user.interface';
@@ -15,7 +15,7 @@ import * as firebase from 'firebase';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private authSvc: AuthService, private route: Router) { }
+  constructor(private authSvc: AuthService, private route: Router,private elementRef: ElementRef) { }
 
   loginForm = new FormGroup({
     email: new FormControl('', Validators.required),
@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   })
 
   ngOnInit(): void {
+       this.elementRef.nativeElement.ownerDocument.body.style.backgroundColor = '#B1DEBA';
 
   }
 

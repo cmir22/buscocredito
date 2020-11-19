@@ -4,17 +4,15 @@ import { PostService } from '../../posts/post.service';
 import { PostI } from '../../../shared/models/post.interface';
 import { Observable } from 'rxjs';
 
-
 import { UserI } from 'src/app/shared/models/user.interface';
 import { NewPostComponent } from '../../posts/new-post/new-post.component'
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router'
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
-import { importExpr } from '@angular/compiler/src/output/output_ast';
 
 import { NewWorkerComponent} from '../../../new-worker/new-worker.component';
 

@@ -14,6 +14,7 @@ export interface childRol{
 export interface UserI{
 
     email: string;
+    emailEmpresa?: string;
     password?: string;
     displayName?: string;
     photoURL?: string;
@@ -22,6 +23,7 @@ export interface UserI{
     userRol?: userRol;
     adminRol?: adminRol;
     childRol?: childRol;
+
     
 
 }
