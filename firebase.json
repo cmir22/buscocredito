@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/buscoCredito",
+    "public": "dist/buscocredito",
     "ignore": [
       "firebase.json",
       "**/.*",
