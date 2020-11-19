@@ -1,14 +1,14 @@
 
 export interface userRol{
-    userRol?: boolean;   
+    userRol?: any;   
 }
 
 export interface adminRol{
-    adminRol?: boolean;   
+    adminRol?: any;   
 }
 
 export interface childRol{
-    childRol?: boolean;   
+    childRol?: any;   
 }
 
 export interface UserI{
@@ -23,7 +23,11 @@ export interface UserI{
     userRol?: userRol;
     adminRol?: adminRol;
     childRol?: childRol;
+<<<<<<< HEAD
 
+=======
+    emailEmpresa?: string
+>>>>>>> 625590f3c069fde936a7cb00857d9c0e248fa499
     
 
 }

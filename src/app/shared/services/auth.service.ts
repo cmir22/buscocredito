@@ -91,12 +91,20 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
+<<<<<<< HEAD
   public updateUserDataWorker(user: UserI,emailEmpresa) {
+=======
+  public updateUserDataWorker(user: UserI,emailEmpresa: string) {
+>>>>>>> 625590f3c069fde936a7cb00857d9c0e248fa499
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: UserI = {
       uid: user.uid,
       email: user.email,
+<<<<<<< HEAD
       emailEmpresa: emailEmpresa,
+=======
+      emailEmpresa: user.emailEmpresa,
+>>>>>>> 625590f3c069fde936a7cb00857d9c0e248fa499
       childRol: {
         childRol: true
        }

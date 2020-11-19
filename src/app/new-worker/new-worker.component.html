@@ -1,4 +1,5 @@
 <section id="register" class="mb-5 mt-5">
+<<<<<<< HEAD
 
 
     <form #formRegister="ngForm" (ngSubmit)="onAddUser('','')">
@@ -29,3 +30,43 @@
 
 
     </form>
+=======
+  <div class="container">
+    <div class="card">
+      <form
+        #formRegister="ngForm"
+        (ngSubmit)="onAddUser('', '', '')"
+        
+      >
+        <div class="form-group">
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            [(ngModel)]="email"
+            required
+            minlength="8"
+          />
+        </div>
+
+        <div class="form-group">
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            [(ngModel)]="password"
+            required
+            minlength="5"
+            maxlength="10"
+          />
+        </div>
+
+
+        <button type="submit" class="btn btn-lg btn-secondary btn-block">
+          Registrar
+        </button>
+      </form>
+    </div>
+  </div>
+</section>
+>>>>>>> 625590f3c069fde936a7cb00857d9c0e248fa499
