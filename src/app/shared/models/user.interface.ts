@@ -23,11 +23,6 @@ export interface UserI{
     userRol?: userRol;
     adminRol?: adminRol;
     childRol?: childRol;
-<<<<<<< HEAD
-
-=======
-    emailEmpresa?: string
->>>>>>> 625590f3c069fde936a7cb00857d9c0e248fa499
     
 
 }

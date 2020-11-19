@@ -16,7 +16,7 @@ const routes: Routes = [
 
 
   // USE CHILDREN
-  { path: '', redirectTo: '/login', pathMatch: 'full' },
+//  { path: '', redirectTo: '/login', pathMatch: 'full' },
 
   { path: 'home', loadChildren: () => import('./components/pages/home/home.module').then(m => m.HomeModule) },
   { path: 'post/:id', component: PostComponent },
@@ -44,7 +44,7 @@ const routes: Routes = [
 
   { path: 'userWall', loadChildren: () => import('./components/pages/user-wall/user-wall.module').then(m => m.UserWallModule) },
 
-  {path: 'welcome',component: WelcomeHomeComponent}
+  {path: '',component: WelcomeHomeComponent}
 
 
 ];
