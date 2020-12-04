@@ -1,38 +1,108 @@
+<!-------------------------------------------------------------------------------------------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/login">BuscoCredito.com</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <!-------------------------------------------------------------------------------------------------------------------------->
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <!--    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
+      </li>
+    </ul>
+    <!-------------------------------------------------------------------------------------------------------------------------->
+    <li class="nav-item form-inline my-2 my-lg-0">
+      <a style="color: white" class="nav-link" routerLink="/workers">Inicio</a>
+      <!-- <a style="color: white;" class="nav-link " routerLink="/about" *ngIf="authSvc.userData$ | async">Administrador</a>-->
+      <a
+        style="color: white"
+        class="nav-link"
+        routerLink="/login"
+        (click)="onLogout()"
+        >Cerrar Sesion</a
+      >
+    </li>
+    <!-------------------------------------------------------------------------------------------------------------------------->
+  </div>
+</nav>
+<!-------------------------------------------------------------------------------------------------------------------------->
 <div class="container" *ngIf="post$ | async as post; else loading">
-  <mat-card class="post-card">
+  <mat-card id="mainCard">
     <mat-card-header class="nameTitle">
       <mat-card-title>
-        <h1 style="font-size: 50px">
+        <h1 id="nameUser">
           {{ post.nameUser }}
         </h1>
       </mat-card-title>
     </mat-card-header>
-
     <!--  <img matCardImage [src]="post.imagePost">-->
-
     <mat-card-content>
-      <div class="infoCards">
-        <div>
-          <button class="infoCardButtonName" mat-flat-button disabled>
-            {{ post.nameUser }}
-          </button>
+      <div>
+        <mat-card class="divData">
+          <h1>
+            Tipo de Prestamo:
+            <span class="data">
+              {{ post.tagsPost }}
+            </span>
+          </h1>
+        </mat-card>
 
-          <button class="infoCardButtonCredit" mat-flat-button disabled>
-            {{ post.tagsPost }}
-          </button>
+        <mat-card class="divData">
+          <h1>
+            Cantidad: <span class="data"> {{ post.moneyPost }} Pesos </span>
+          </h1>
+        </mat-card>
 
-          <button class="infoCardButtonMoney" mat-flat-button disabled>
-            ${{ post.moneyPost }}
-          </button>
-
-          <button class="infoCardButtonMonths" mat-flat-button disabled>
-            {{ post.monthPost }}
-          </button>
-        </div>
+        <mat-card class="divData">
+          <h1>
+            Tiempo: <span class="data"> {{ post.monthPost }} Meses </span>
+          </h1>
+        </mat-card>
       </div>
     </mat-card-content>
   </mat-card>
 </div>
+
+<!-------------------------------------------------------->
+<mat-card id="cardOfertar">
+  <div class="example-container">
+    <form action="#" id="formBid">
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Banco</mat-label>
+        <input matInput id="bidBanco" />
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Tipo de Credito</mat-label>
+        <mat-select [(value)]="tipoPrestamo">
+          <mat-option value="Personal">Personal</mat-option>
+          <mat-option value="Negocio">Negocio</mat-option>
+        </mat-select>
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Tiempo</mat-label>
+        <input matInput id="bidTiempo" />
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+
+      <button mat-raised-button type="submit" id="buttonSubmit">Ofertar</button>
+    </form>
+  </div>
+</mat-card>
+<!-------------------------------------------------------->
 
 <ng-template #loading>
   <div class="container-spinner">

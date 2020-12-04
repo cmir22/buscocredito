@@ -28,12 +28,7 @@
     <!-------------------------------------------------------------------------------------------------------------------------->
 
     <li class="nav-item form-inline my-2 my-lg-0">
-      <a
-        style="color: white"
-        class="nav-link"
-        routerLink="/workers"
-        >Inicio</a
-      >
+      <a style="color: white" class="nav-link" routerLink="/workers">Inicio</a>
 
       <ng-template #showLogin>
         <a
@@ -52,7 +47,6 @@
           >Registrarse</a
         >
       </ng-template>
-
 
       <!-- <a style="color: white;" class="nav-link " routerLink="/about"
                   *ngIf="authSvc.userData$ | async">Administrador</a>
@@ -85,7 +79,7 @@
         class="btn btn-secondary btn-lg btn-block"
         style="background-color: black; border: none"
       >
-        Propuestas
+        Usuarios
       </button>
 
       <button
@@ -98,41 +92,9 @@
       </button>
 
       <mat-divider class="matDividerSidebar"></mat-divider>
-      <button
-        type="button"
-        class="btn btn-secondary btn-lg btn-block"
-        style="background-color: black; border: none"
-      >
-        Aceptadas
-      </button>
     </div>
 
     <!-------------------------------------------------------------------------------------------------------->
-
-    <div class="filterSidebar text-center" *ngIf="users$ | async as users">
-      <h3 class="filterTextSidebar">Filtro</h3>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Tipo de Credito </mat-label>
-        <mat-select>
-          <mat-option
-            *ngFor="let creditTipe of credits"
-            [value]="creditTipe.value"
-          >
-            {{ creditTipe.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-
-      <mat-form-field appearance="fill">
-        <mat-label>Meses</mat-label>
-        <mat-select>
-          <mat-option *ngFor="let months of month" [value]="months.value">
-            {{ months.viewValue }}
-          </mat-option>
-        </mat-select>
-      </mat-form-field>
-    </div>
 
     <div class="content">
       <!-------------------------------------------------------------------------------------------------------->
@@ -157,11 +119,11 @@
               </button>
 
               <button class="infoCardButtonMoney" mat-flat-button disabled>
-                ${{ post.moneyPost }}
+                ${{ post.moneyPost }} Pesos
               </button>
 
               <button class="infoCardButtonMonths" mat-flat-button disabled>
-                {{ post.monthPost }}
+                {{ post.monthPost }} Meses
               </button>
 
               <mat-card class="mate">

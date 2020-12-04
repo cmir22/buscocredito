@@ -1,89 +1,65 @@
+$fondo: #343a40;
+$blanco: #ecf0f1;
 .container {
-  width: 50%;
-  margin: 1% auto;
+  //width: 50%;
   padding: 2%;
-  border-radius: 0;
+  margin-left: -0rem;
+}
 
-  .post-card {
-    background-color: #343a40;
-    text-align: center;
+#mainCard {
+  background-color: #343a40;
+}
 
-    .nameTitle {
-      margin-top: 20px;
-      color: white;
+#nameUser {
+  font-size: 40px;
+  color: white;
+  margin-top: 2rem;
+}
 
-      display: block;
-      margin-left: auto;
-      margin-right: auto;
-    }
+.data {
+  font-size: 30px;
+  color: black;
+  float: right;
+}
+
+.divData {
+  padding: 10px;
+  background-color: $blanco;
+  margin-top: 3rem;
+}
+
+#field {
+  width: 300px;
+}
+
+#in{
+  color: red;
+}
+
+.labelsColor {
+  color: gray;
+}
+
+#buttonSubmit {
+  text-align: center;
+  background-color: $fondo;
+  color: $blanco;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+}
+
+#cardOfertar {
+  margin-top: -25rem;
+  margin-right: 20em;
+  background-color: $blanco;
+  float: right;
+  width: 17.5%;
+
+  #buttonSubmitText {
+    font-size: 22px;
+    color: $blanco;
+    border: 0px;
+    padding: 0px;
   }
-
-  img {
-    margin-top: 50px;
-    width: 250px;
-    height: 250px;
-    border-radius: 50%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  // CARDS
-  .infoCards {
-    margin-top: 50px;
-    background-color: #d9d9d9;
-    margin-left: 160px;
-    height: auto;
-    width: auto;
-    margin-right: 10px !important;
-    margin-left: 10px !important;
-
-    .nombreUsuarioCard {
-      margin-left: 15px !important;
-      margin-top: 20px !important;
-      font-size: 30px !important;
-    }
-
-    .infoCardButtonMoney {
-      margin-left: 15px !important;
-      margin-top: 20px !important;
-      height: 50px;
-      width: 300px;
-      font-size: 30px;
-      background-color: #005727;
-      color: white;
-      margin-bottom: 35px;
-    }
-
-    .infoCardButtonMonths {
-      margin-left: 15px !important;
-      font-size: 30px;
-      height: 50px;
-      width: 300px;
-      background-color: #343a40;
-      color: white;
-    }
-
-    .infoCardButtonCredit {
-      margin-left: 15px !important;
-      margin-top: 20px !important;
-      height: 50px;
-      width: 300px;
-      font-size: 30px;
-      background-color: #343a40;
-      color: white;
-    }
-
-    .infoCardButtonName {
-      margin-left: 15px !important;
-      margin-top: 20px !important;
-      height: 50px;
-      width: 300px;
-      font-size: 30px;
-      background-color: #d9d9d9;
-      color: black;
-    }
-  }
-
-  // END CARDS
 }
