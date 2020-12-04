@@ -24,6 +24,7 @@ import { ContainerAppComponent } from './components/pages/container-app/containe
 import { RegisterComponent } from './components/register/register.component';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
 import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
+import { WorkerComponent } from './worker/worker.component';
 
 
 
@@ -36,6 +37,7 @@ import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
     RegisterComponent,
     NewWorkerComponent,
     WelcomeHomeComponent,
+    WorkerComponent,
 
 
   ],
