@@ -1,113 +1,184 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <!--  <img style="margin-right: 3px;"
+      src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/logoBuscoCredito.png?alt=media&token=60230461-6d50-4fe0-bb99-d415c4f41dbd"
+      width="76" height="45" class="d-inline-block align-top" alt="" loading="lazy">
+-->
+  <a class="navbar-brand" href="/login">BuscoCredito.com</a>
+  <button
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <!-------------------------------------------------------------------------------------------------------------------------->
+
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <!--    <a class="nav-link" href="#">Inicio <span class="sr-only">(current)</span></a> -->
+      </li>
+    </ul>
+
+    <!-------------------------------------------------------------------------------------------------------------------------->
+
+    <li class="nav-item form-inline my-2 my-lg-0">
+      <a
+        style="color: white"
+        class="nav-link"
+        routerLink="/workers"
+        >Inicio</a
+      >
+
+      <ng-template #showLogin>
+        <a
+          style="color: white"
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          >Iniciar Sesion</a
+        >
+
+        <a
+          style="color: white"
+          class="nav-link"
+          routerLink="/register"
+          routerLinkActive="active"
+          >Registrarse</a
+        >
+      </ng-template>
+
+
+      <!-- <a style="color: white;" class="nav-link " routerLink="/about"
+                  *ngIf="authSvc.userData$ | async">Administrador</a>
+-->
+      <a
+        style="color: white"
+        class="nav-link"
+        routerLink="/login"
+        (click)="onLogout()"
+        >Cerrar Sesion</a
+      >
+    </li>
+    <!-------------------------------------------------------------------------------------------------------------------------->
+  </div>
+</nav>
+
 <!-------------------------------------------------------------------------------------------------------->
 <main class="nav">
-    <div class="row" *ngIf="posts$ | async as posts">
-      <div class="sidebar text-center">
-        <img
-          width="120"
-          height="120"
-          src="https://scontent.ftij2-1.fna.fbcdn.net/v/t1.0-9/47441277_1451944074939940_1721077250448687104_n.jpg?_nc_cat=105&_nc_sid=09cbfe&_nc_ohc=t4RQed45UWAAX_I85MZ&_nc_ht=scontent.ftij2-1.fna&oh=ba51972b036089240150e3dd8efb3c02&oe=5F3EBC14"
-          class="img-circle"
-        />
-        <h3 class="Username">Cruz Ibarra</h3>
-        <button
-          type="button"
-          class="btn btn-secondary btn-lg btn-block"
-          style="background-color: black; border: none"
-        >
-          Propuestas
-        </button>
-  
-        <button
-          type="button"
-          class="btn btn-secondary btn-lg btn-block"
+  <div class="row" *ngIf="posts$ | async as posts">
+    <div class="sidebar text-center">
+      <img
+        width="120"
+        height="120"
+        src="https://ideapod.com/wp-content/uploads/2017/08/person-1.jpg"
+        class="img-circle"
+      />
+      <h3 class="Username">Ivan Collazo</h3>
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg btn-block"
+        style="background-color: black; border: none"
+      >
+        Propuestas
+      </button>
+
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg btn-block"
+        *ngFor="let post of posts"
+        [routerLink]="['/post', post.id]"
+      >
+        {{ post.nameUser }}
+      </button>
+
+      <mat-divider class="matDividerSidebar"></mat-divider>
+      <button
+        type="button"
+        class="btn btn-secondary btn-lg btn-block"
+        style="background-color: black; border: none"
+      >
+        Aceptadas
+      </button>
+    </div>
+
+    <!-------------------------------------------------------------------------------------------------------->
+
+    <div class="filterSidebar text-center" *ngIf="users$ | async as users">
+      <h3 class="filterTextSidebar">Filtro</h3>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Tipo de Credito </mat-label>
+        <mat-select>
+          <mat-option
+            *ngFor="let creditTipe of credits"
+            [value]="creditTipe.value"
+          >
+            {{ creditTipe.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Meses</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let months of month" [value]="months.value">
+            {{ months.viewValue }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div class="content">
+      <!-------------------------------------------------------------------------------------------------------->
+
+      <div class="container" *ngIf="posts$ | async as posts; else loading">
+        <mat-card class="crearSolicitud">Solicitantes de Credito</mat-card>
+        <!--  {{posts$ | async | json}} -->
+
+        <mat-card
+          class="post-card"
           *ngFor="let post of posts"
           [routerLink]="['/post', post.id]"
         >
-          {{ post.nameUser }}
-        </button>
-  
-        <mat-divider class="matDividerSidebar"></mat-divider>
-        <button
-          type="button"
-          class="btn btn-secondary btn-lg btn-block"
-          style="background-color: black; border: none"
-        >
-          Aceptadas
-        </button>
-      </div>
-  
-      <!-------------------------------------------------------------------------------------------------------->
-  
-      <div class="filterSidebar text-center" *ngIf="users$ | async as users">
-        <h3 class="filterTextSidebar">Filtro</h3>
-  
-        <mat-form-field appearance="fill">
-          <mat-label>Tipo de Credito </mat-label>
-          <mat-select>
-            <mat-option
-              *ngFor="let creditTipe of credits"
-              [value]="creditTipe.value"
-            >
-              {{ creditTipe.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-  
-        <mat-form-field appearance="fill">
-          <mat-label>Meses</mat-label>
-          <mat-select>
-            <mat-option *ngFor="let months of month" [value]="months.value">
-              {{ months.viewValue }}
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-      </div>
-  
-      <div class="content">
-        <!-------------------------------------------------------------------------------------------------------->
-  
-        <div class="container" *ngIf="posts$ | async as posts; else loading">
-          <mat-card class="crearSolicitud">Solicitantes de Credito</mat-card>
-          <!--  {{posts$ | async | json}} -->
-  
-          <mat-card
-            class="post-card"
-            *ngFor="let post of posts"
-            [routerLink]="['/post', post.id]"
-          >
-            <div class="infoCards">
-              <div>
-                <button class="infoCardButtonName" mat-flat-button disabled>
-                  {{ post.nameUser }}
-                </button>
-  
-                <button class="infoCardButtonCredit" mat-flat-button disabled>
-                  {{ post.tagsPost }}
-                </button>
-  
-                <button class="infoCardButtonMoney" mat-flat-button disabled>
-                  ${{ post.moneyPost }}
-                </button>
-  
-                <button class="infoCardButtonMonths" mat-flat-button disabled>
-                  {{ post.monthPost }}
-                </button>
-  
-                <mat-card class="mate">
-                  <img
-                    class="imageVerficated"
-                    src="https://www.nicepng.com/png/detail/73-730077_verify-users-via-e-mail-verified-user.png"
-                    width="175"
-                    height="100"
-                    alt="..."
-                  />
-                </mat-card>
-              </div>
+          <div class="infoCards">
+            <div>
+              <button class="infoCardButtonName" mat-flat-button disabled>
+                {{ post.nameUser }}
+              </button>
+
+              <button class="infoCardButtonCredit" mat-flat-button disabled>
+                {{ post.tagsPost }}
+              </button>
+
+              <button class="infoCardButtonMoney" mat-flat-button disabled>
+                ${{ post.moneyPost }}
+              </button>
+
+              <button class="infoCardButtonMonths" mat-flat-button disabled>
+                {{ post.monthPost }}
+              </button>
+
+              <mat-card class="mate">
+                <img
+                  class="imageVerficated"
+                  src="https://www.nicepng.com/png/detail/73-730077_verify-users-via-e-mail-verified-user.png"
+                  width="175"
+                  height="100"
+                  alt="..."
+                />
+              </mat-card>
             </div>
-  
-            <img class="cardImage" matCardImage [src]="post.imagePost" />
-  
-            <!--    <mat-card-content>
+          </div>
+
+          <!-- <img class="cardImage" matCardImage [src]="post.imagePost" />-->
+
+          <!--    <mat-card-content>
               <p>
                   {{post.contentPost}}
                   {{post.nameUser}}
@@ -115,7 +186,7 @@
      
           </mat-card-content>
            -->
-            <!--
+          <!--
           <mat-card-actions>
               <mat-chip-list>
                   <a class="tipoPrestamoText">Tipo de Prestamo:</a>
@@ -127,19 +198,18 @@
           </mat-card-actions>
   
   -->
-          </mat-card>
-  
-          <!-------------------------------------------------------------------------------------------------------->
-        </div>
+        </mat-card>
+
+        <!-------------------------------------------------------------------------------------------------------->
       </div>
-  
-      <!-------------------------------------------------------------------------------------------------------->
-  
-      <ng-template #loading>
-        <div class="container-spinner">
-          <mat-spinner></mat-spinner>
-        </div>
-      </ng-template>
     </div>
-  </main>
-  
+
+    <!-------------------------------------------------------------------------------------------------------->
+
+    <ng-template #loading>
+      <div class="container-spinner">
+        <mat-spinner></mat-spinner>
+      </div>
+    </ng-template>
+  </div>
+</main>

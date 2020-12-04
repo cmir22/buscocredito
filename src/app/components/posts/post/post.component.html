@@ -1,47 +1,41 @@
 <div class="container" *ngIf="post$ | async as post; else loading">
+  <mat-card class="post-card">
+    <mat-card-header class="nameTitle">
+      <mat-card-title>
+        <h1 style="font-size: 50px">
+          {{ post.nameUser }}
+        </h1>
+      </mat-card-title>
+    </mat-card-header>
 
-    <mat-card class="post-card">
-        <mat-card-header class="nameTitle">
-            <mat-card-title>
-                <h1 style="font-size: 50px;">
-                    {{post.nameUser}}
-                </h1>
+    <!--  <img matCardImage [src]="post.imagePost">-->
 
-            </mat-card-title>
+    <mat-card-content>
+      <div class="infoCards">
+        <div>
+          <button class="infoCardButtonName" mat-flat-button disabled>
+            {{ post.nameUser }}
+          </button>
 
-        </mat-card-header>
+          <button class="infoCardButtonCredit" mat-flat-button disabled>
+            {{ post.tagsPost }}
+          </button>
 
-        <img matCardImage [src]="post.imagePost">
+          <button class="infoCardButtonMoney" mat-flat-button disabled>
+            ${{ post.moneyPost }}
+          </button>
 
-        <mat-card-content>
-
-            <div class="infoCards">
-
-                <div>
-                    <button class="infoCardButtonName" mat-flat-button disabled>{{post.nameUser}}</button>
-
-                    <button class="infoCardButtonCredit" mat-flat-button disabled>{{post.tagsPost}}</button>
-
-                    <button class="infoCardButtonMoney" mat-flat-button disabled>${{post.moneyPost}}</button>
-
-                    <button class="infoCardButtonMonths" mat-flat-button disabled>{{post.monthPost}}</button>
- 
-
-                </div>
-
-                
-
-            </div>
-
-        </mat-card-content>
-
-    </mat-card>
-
-
+          <button class="infoCardButtonMonths" mat-flat-button disabled>
+            {{ post.monthPost }}
+          </button>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
 </div>
 
 <ng-template #loading>
-    <div class="container-spinner">
-        <mat-spinner></mat-spinner>
-    </div>
+  <div class="container-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
 </ng-template>

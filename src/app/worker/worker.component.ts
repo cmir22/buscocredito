@@ -3,6 +3,7 @@ import { PostService} from '../components/posts/post.service';
 import { PostI} from '../shared/models/post.interface';
 import { Observable } from 'rxjs';
 import { UserI } from 'src/app/shared/models/user.interface';
+import * as firebase from 'firebase';
 
 interface creditTipe {
   value: string;
@@ -36,6 +37,12 @@ export class WorkerComponent implements OnInit {
     public posts$ : Observable<PostI[]>;
     public users$ : Observable<UserI[]>;
   constructor(private postSvc: PostService) { }
+
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
+    });
+  }
 
   ngOnInit(): void {
     this.posts$ = this.postSvc.getAllPosts();

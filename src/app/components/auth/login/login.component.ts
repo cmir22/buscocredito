@@ -43,11 +43,11 @@ export class LoginComponent implements OnInit {
           this.isChild = Object.assign({}, userRol.childRol).hasOwnProperty('childRol');
            //this.isAdmin = true;
            if(this.isAdmin == true){
-            this.route.navigate(['/about']);
+            this.route.navigate(['/admin']);
            }else if(this.isUser == true){
-            this.route.navigate(['/userWall']);
+            this.route.navigate(['/user']);
            }else if(this.isChild == true){
-            this.route.navigate(['/homeUser']);
+            this.route.navigate(['/workers']);
            }else{
             firebase.auth().signOut().then(function () {
             }).catch(function (error) {

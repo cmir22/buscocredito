@@ -11,6 +11,7 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
+import * as firebase from 'firebase';
 
 interface creditTipe {
   value: string;
@@ -72,6 +73,12 @@ export class UserWallComponent implements OnInit, AfterViewInit {
       this.initValuesForm(user);
     });
     this.myFunction();
+  }
+
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
+    });
   }
 
   ngAfterViewInit() {}

@@ -16,6 +16,7 @@ import { ModalComponent } from '../../../shared/component/modal/modal.component'
 import { ModalModule } from 'src/app/shared/component/modal/modal.module';
 import { UserI } from 'src/app/shared/models/user.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-about',
@@ -116,6 +117,12 @@ export class AboutComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(ModalComponent, config);
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog result ${result}');
+    });
+  }
+
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
     });
   }
 

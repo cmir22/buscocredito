@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute} from '@angular/router'
+import { ActivatedRoute } from '@angular/router'
 
 import { PostService } from '../post.service'
 import { Observable } from 'rxjs';
@@ -16,8 +16,8 @@ import { ModalComponent } from '../../../shared/component/modal/modal.component'
 export class PostComponent implements OnInit {
 
 
-  public post$ : Observable<PostI>;
-  constructor(private route: ActivatedRoute, private postSvc:PostService) { }
+  public post$: Observable<PostI>;
+  constructor(private route: ActivatedRoute, private postSvc: PostService) { }
 
   ngOnInit(): void {
     const idPost = this.route.snapshot.params.id;

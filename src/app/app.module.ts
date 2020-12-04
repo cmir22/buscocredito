@@ -8,38 +8,28 @@ import { PostComponent } from './components/posts/post/post.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 
-
-import {ToolbarComponent} from './shared/component/toolbar/toolbar.component';
-
 // FIREBASE 
 import { AngularFirestoreModule } from '@angular/fire/firestore';
-import { AngularFireStorageModule} from '@angular/fire/storage';
+import { AngularFireStorageModule } from '@angular/fire/storage';
 //import { StorageBucket} from '@angular/fire/storage';
-import { AngularFireModule} from '@angular/fire';
+import { AngularFireModule } from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 
-import { ReactiveFormsModule} from '@angular/forms';
-import { ContainerAppComponent } from './components/pages/container-app/container-app.component';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
 import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
 import { WorkerComponent } from './worker/worker.component';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
     PostComponent,
-    ToolbarComponent,
-    ContainerAppComponent,
     RegisterComponent,
     NewWorkerComponent,
     WelcomeHomeComponent,
     WorkerComponent,
-
-
   ],
   imports: [
     BrowserModule,
@@ -56,10 +46,7 @@ import { WorkerComponent } from './worker/worker.component';
   ],
 
   entryComponents: [],
-
-  providers: [
-    
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

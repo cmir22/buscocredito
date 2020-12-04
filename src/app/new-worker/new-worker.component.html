@@ -1,31 +1,51 @@
 <section id="register" class="mb-5 mt-5">
+  <form #formRegister="ngForm" (ngSubmit)="onAddUser('', '')">
+    <h1 class="h3 mb-3 font-weight-normal">Register</h1>
 
+    <div class="form-group">
+      <input
+        type="name"
+        name="name"
+        class="form-control"
+        placeholder="name"
+        [(ngModel)]="nombre"
+        required
+        minlength="5"
+      />
+    </div>
 
-    <form #formRegister="ngForm" (ngSubmit)="onAddUser('','')">
-        <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+    <div class="form-group">
+      <input
+        type="email"
+        name="email"
+        class="form-control"
+        placeholder="Email"
+        [(ngModel)]="email"
+        required
+        minlength="8"
+      />
+    </div>
 
-        <div class="form-group">
-            <input type="name" name="name" class="form-control" placeholder="name" [(ngModel)]="nombre"
-                required minlength="5" >
-        </div>
+    <div class="form-group">
+      <input
+        type="password"
+        name="password"
+        class="form-control"
+        placeholder="Password"
+        [(ngModel)]="password"
+        required
+        minlength="5"
+        maxlength="10"
+      />
+    </div>
 
-        <div class="form-group">
-            <input type="email" name="email" class="form-control" placeholder="Email" [(ngModel)]="email" required
-                minlength="8">
-        </div>
-
-        <div class="form-group">
-            <input type="password" name="password" class="form-control" placeholder="Password" [(ngModel)]="password"
-                required minlength="5" maxlength="10">
-        </div>
-
-    
-
-        <button type="submit" class="btn btn-lg btn-secondary btn-block">Registrar</button>
-        <div class="form-group">
-            <a routerLink="/login" class="form-control login-user">Ya tienes una cuenta?</a>
-        </div>
-
-
-
-    </form>
+    <button type="submit" class="btn btn-lg btn-secondary btn-block">
+      Registrar
+    </button>
+    <div class="form-group">
+      <a routerLink="/login" class="form-control login-user"
+        >Ya tienes una cuenta?</a
+      >
+    </div>
+  </form>
+</section>

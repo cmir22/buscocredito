@@ -7,6 +7,7 @@ import { AuthService } from '../../../shared/services/auth.service';
 import { UserI } from '../../../shared/models/user.interface';
 import { auth } from 'firebase';
 import { assertNotNull } from '@angular/compiler/src/output/output_ast';
+import * as firebase from 'firebase';
 
 @Component({
   selector: 'app-profile',
@@ -63,6 +64,12 @@ export class ProfileComponent implements OnInit {
     setTimeout(function () {
       location.reload();
     }, 1000);
+  }
+
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
+    });
   }
 
   onSaveUser(user): void {
