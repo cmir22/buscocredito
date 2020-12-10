@@ -1,36 +1,51 @@
-<section id="register" class="mb-5 mt-5">
-    <div class="container">
-        <div class="row">
+<!-------------------------------------------------------------------------------------------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">BuscoCredito.com</a>
+</nav>
 
-            <div class="col-xs-12 col-sm-6 col-md-4 mx-auto">
-                <div class="card_register">
-                    <div class="card">
-                        <div class="card-body text-center">
-                            <form #formRegister="ngForm" (ngSubmit)="onAddUser('','')">
-                                <h1 class="h3 mb-3 font-weight-normal">Register</h1>
+<img
+  id="imageLogo"
+  src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/Logo-BuscoCredito.png?alt=media&token=765d47cc-35d5-43a2-948a-fa9960dd09af"
+/>
 
-                                <div class="form-group">
-                                    <input type="email" name="email" class="form-control" placeholder="Email"
-                                        [(ngModel)]="email" required minlength="8">
-                                </div>
+<div id="divCard">
+  <mat-card>
+    <h1 id="loginText">Registrarse</h1>
+    <mat-card-content>
+      <form #formRegister="ngForm" (ngSubmit)="onAddUser('', '')">
+        <mat-form-field>
+          <input
+            type="email"
+            name="email"
+            class="form-control"
+            placeholder="Email"
+            [(ngModel)]="email"
+            required
+            minlength="8"
+            matInput
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <input
+            type="password"
+            name="password"
+            class="form-control"
+            placeholder="Password"
+            [(ngModel)]="password"
+            required
+            minlength="5"
+            maxlength="10"
+            matInput
+          />
+        </mat-form-field>
 
-                                <div class="form-group">
-                                    <input type="password" name="password" class="form-control" placeholder="Password"
-                                        [(ngModel)]="password" required minlength="5" maxlength="10">
-                                </div>
+        <button type="submit" class="btn btn-lg btn-secondary btn-block">
+          Registrarse
+        </button>
 
-                                <button type="submit" 
-                                    class="btn btn-lg btn-secondary btn-block">Registrar</button>
-                                <div class="form-group">
-                                    <a routerLink="/login" class="form-control login-user">Ya tienes una cuenta?</a>
-                                </div>
+        <a href="/login" ><h3 id="linkRegister">¿Ya tienes una cuenta?</h3></a>
 
-                 
-
-                            </form>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

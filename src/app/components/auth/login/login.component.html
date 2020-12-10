@@ -1,37 +1,41 @@
-    <mat-card id="carta">
-        <img id="imageLogo" src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/logoBuscoCredito.png?alt=media&token=60230461-6d50-4fe0-bb99-d415c4f41dbd" alt="logo">
+<!-------------------------------------------------------------------------------------------------------------------------->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="/">BuscoCredito.com</a>
+</nav>
 
-        <mat-card-header >
-          <mat-card-title><h1 style="margin-left: 105px;">Inicio de Sesion</h1></mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
-            <p>
-              <mat-form-field>
-                <input
-                  type="text"
-                  matInput
-                  placeholder="Usuario"
-                  formControlName="email"
-                />
-              </mat-form-field>
-            </p>
-      
-            <p>
-              <mat-form-field>
-                <input
-                  type="password"
-                  matInput
-                  placeholder="Contraseña"
-                  formControlName="password"
-                />
-              </mat-form-field>
-            </p>
-      
-            <button type="submit" mat-raised-button>Iniciar Sesion</button>
-          </form>
-        </mat-card-content>
-      </mat-card>
+<img
+  id="imageLogo"
+  src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/Logo-BuscoCredito.png?alt=media&token=765d47cc-35d5-43a2-948a-fa9960dd09af"
+/>
 
+<div id="divCard">
+  <mat-card>
+    <h1 id="loginText">Inicio de Sesion</h1>
+    <mat-card-content>
+      <form [formGroup]="loginForm" (ngSubmit)="onLogin(loginForm.value)">
+        <mat-form-field>
+          <input
+            type="text"
+            matInput
+            placeholder="Usuario"
+            formControlName="email"
+          />
+        </mat-form-field>
 
+        <mat-form-field>
+          <input
+            type="password"
+            matInput
+            placeholder="Contraseña"
+            formControlName="password"
+          />
+        </mat-form-field>
 
+        <button type="submit" mat-raised-button>Iniciar Sesion</button>
+        <a href="/register"
+          ><h3 id="linkRegister">¿No tienes una cuenta?</h3></a
+        >
+      </form>
+    </mat-card-content>
+  </mat-card>
+</div>

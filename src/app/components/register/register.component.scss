@@ -1,19 +1,43 @@
-.form-control.login-user {
-    border: 0px solid #fff !important;
+$dark-Gray: #323436;
+
+mat-card-title,
+mat-card-content {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  width: 100%;
+  background-color: $dark-Gray;
+  color: white;
+  margin-top: 1rem;
+}
+
+#divCard {
+  margin-top: 3rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+
+  .mat-form-field {
+    width: 100%;
+    margin-top: 1rem;
   }
-  .btn-social{
-    position: relative;
-    text-align: center;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: #fff;
-    border-color: rgba(0,0,0,0.2);
-  }
-  
-  .btn-facebook{
-    background: #3b5998;
-  }
-  .btn-google{
-    background: #dd4b39;
-  }
+}
+
+#loginText {
+  text-align: center;
+}
+
+#imageLogo {
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  margin-top: 4rem;
+  height: 100px;
+  width: 180px;
+}
+
+#linkRegister {
+  text-align: center;
+  margin-top: 2rem;
+}

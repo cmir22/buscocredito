@@ -30,7 +30,7 @@ export class RegisterComponent implements OnInit {
     .then(userData => {
       resolve(userData),
       this.authService.updateUserData(userData.user)
-      this.router.navigate([`/userWall`]);
+      this.router.navigate([`/user`]);
     }).catch(err => console.log(reject(err)))
   });
 }
