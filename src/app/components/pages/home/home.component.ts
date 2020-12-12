@@ -14,7 +14,8 @@ import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
 
-import { NewWorkerComponent} from '../../../new-worker/new-worker.component';
+import { NewWorkerComponent } from '../../../new-worker/new-worker.component';
+import * as firebase from 'firebase';
 
 
 interface creditTipe {
@@ -108,6 +109,11 @@ export class HomeComponent implements OnInit {
 
   }
 
+  onLogout(): void {
+    firebase.auth().signOut().then(function () {
+    }).catch(function (error) {
+    });
+  }
 
   ngAfterViewInit() { }
 
@@ -210,12 +216,12 @@ export class HomeComponent implements OnInit {
 
   openDialogRegister() {
 
-    this.dialog.open(NewWorkerComponent,{
+    this.dialog.open(NewWorkerComponent, {
       width: '550px',
-      height: '520px',
+      height: '450px',
     });
 
-}
+  }
 
 
 }
