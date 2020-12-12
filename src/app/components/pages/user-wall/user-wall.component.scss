@@ -1,73 +1,121 @@
-.welcomeText {
-  text-align: center;
-  background: #F2F2F2;
+$dark: #343a40;
 
-
+// Head card container
+.headCard {
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  max-width: 50rem;
 }
-.crearSolicitud{
+
+// Head logo on the top
+#headLogo {
+  margin-top: 2rem;
+  max-height: 75%;
+  max-width: 85%;
+}
+
+.headCardTextTop {
+  margin-top: 1rem;
+  text-align: center;
+}
+
+// NavBar
+#logo {
+  height: 40px;
+  width: 68px;
+  margin-right: auto;
+  display: flex;
+}
+
+// Card ver mis creditos
+.cardMisCreditos {
+  max-width: 50rem;
+  margin-top: 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  background-color: $dark;
+}
+
+.crearSolicitud {
+  background-color: $dark;
   margin-bottom: 25px;
   text-align: center;
-  background-color: #85A663;
   color: white;
-  font-size: 25px;
+  font-size: 18px;
   margin-top: -12px;
   width: 90%;
-  margin:  0 auto;
+  margin: 0 auto;
   display: block;
   margin-bottom: 15px;
   cursor: pointer;
   margin-top: 15px;
 }
 
-.buttonVerMisCreditos{
-  margin-top: 12px;
-  margin-bottom: 25px;
+.buttonVerMisCreditos {
   text-align: center;
-  background-color:#0D0D0D;
-  color:transparent;
+  background-color: $dark;
+  color: transparent;
   font-size: 15px;
   border-radius: 5px;
-  width: 90% !important;
+  width: 20%;
 
-  
-.verCreditosText{
-  color: white;
-  font-size: 35px;
+  .verCreditosText {
+    color: white;
+    font-size: 35px;
+  }
 
-}
-
- .solicitedCreditsButton{
-  cursor: pointer;
-  color: transparent;
-}
-
+  .solicitedCreditsButton {
+    cursor: pointer;
+    color: transparent;
+  }
 }
 
 table {
-  width: 125%;
-  margin-left: -38px;
-}
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 500px;
+  width: 100%;
 
+  
+}
+#textCreditosSolicitados {
+    color: white;
+  }
 .mat-form-field {
   font-size: 10px;
   width: 100%;
   color: transparent;
 }
 
-  button{
-    width: 12%;
-    color: white;
-    background: white;
-    cursor: pointer;
-  }
-
-._ngcontent-efh-c183{
-  text-align: center;
-  margin-left: 25px;
+button {
+  width: 12%;
+  color: white;
+  background: white;
+  cursor: pointer;
 }
 
+#cardBottom {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 50rem;
+  display: flex;
+  margin-top: 1rem;
+  background-color: #fbab7e;
+  background-image: linear-gradient(62deg, #fbab7e 0%, #f7ce68 100%);
 
-.jumbotron{
+  #cardBottomTextAbout {
+    color: white;
+  }
+}
+
+#callCard{
+  background-color: $dark;
+}
+
+.textos{
+  color: white;
   text-align: center;
-  
 }
