@@ -1,59 +1,36 @@
 <h2>Solicitar Credito</h2>
 
 <mat-dialog-content class="dialog-content">
+  <div class="divNewPost">
+    <form [formGroup]="newPostForm" id="form">
+      <mat-form-field>
+        <h3>Nombre de la casa hogar o alvergue</h3>
+        <input matInput id="casaHogar" />
+      </mat-form-field>
 
+      <mat-form-field>
+        <h3>Nombre de la casa hogar o alvergue</h3>
+        <input matInput id="casaHogar" />
+      </mat-form-field>
 
-    <div class="new-post-container">
+      <mat-form-field appearance="fill">
+        <mat-label>Detector</mat-label>
+        <mat-select [(value)]="detector">
+          <mat-option value="Bajo">Bajo</mat-option>
+          <mat-option value="Alerta">Alerta</mat-option>
+          <mat-option value="Promedio">Promedio</mat-option>
+          <mat-option value="Alto">Bajo</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-        <form [formGroup]="newPostForm"   (ngSubmit)="addNewPost(newPostForm.value)">
+      <mat-form-field >
+        <mat-label>Email</mat-label>
+        <input matInput placeholder="email" formControlName="email" />
+      </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input matInput formControlName="nameUser">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Cantidad</mat-label>
-                <input matInput formControlName="moneyPost">
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-select placeholder="Meses" formControlName="monthPost">
-                    <mat-option value="6 Meses">6 Meses</mat-option>
-                    <mat-option value="12 Meses">12 Meses</mat-option>
-                    <mat-option value="24 Meses">24 Meses</mat-option>
-                    <mat-option value="36 Meses">36 Meses</mat-option>
-                    <mat-option value="Negociable">Negociable</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <!--CAN ADD MULTIPLE AFTER PLACEHOLDER-->
-                <mat-select placeholder="Tipo de credito" formControlName="tagsPost">
-                    <mat-option value="Negocio">Negocio</mat-option>
-                    <mat-option value="Personal">Personal</mat-option>
-                </mat-select>
-            </mat-form-field>
-
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput placeholder="email" formControlName="email">
-            </mat-form-field>
-
-
-
-            <div class="container-input-file">
-                <label class="custom-file">
-                    <input type="file" formControlName="imagePost" (change)="handleImage($event)" />
-                    <mat-icon>cloud_upload</mat-icon><span>Elija su Imagen</span>
-                </label>
-            </div>
-
-            <div class="container-button">
-                <input type="submit" class="mat-flat-button" value="Save" [mat-dialog-close]="true">
-            </div>
-
-        </form>
-
-    </div>
+      <button class="mat-flat-button" type="submit" [mat-dialog-close]="true">
+        Terminar
+      </button>
+    </form>
+  </div>
 </mat-dialog-content>

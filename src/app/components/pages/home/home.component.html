@@ -1,59 +1,61 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-	<img
-	  id="logo"
-	  src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/LogoBlanco.png?alt=media&token=a871434b-08de-454b-ae8c-57abda9922f7"
-	  alt="buscocredito logo "
-	  loading="lazy"
-	/>
-  
-	<button
-	  style="background-color: transparent; border: none"
-	  class="navbar-toggler"
-	  type="button"
-	  data-toggle="collapse"
-	  data-target="#navbarTogglerDemo02"
-	  aria-controls="navbarTogglerDemo02"
-	  aria-expanded="false"
-	  aria-label="Toggle navigation"
-	>
-	  <span class="navbar-toggler-icon"></span>
-	</button>
-  
-	<div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-	  <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
-  
-	  <li class="nav-item form-inline my-2 my-lg-0">
-		<a style="color: white" class="nav-link" routerLink="/financiera">Inicio</a>
-  
-		<ng-template #showLogin>
-		  <a
-			style="color: white"
-			class="nav-link"
-			routerLink="/login"
-			routerLinkActive="active"
-			>Iniciar Sesion</a
-		  >
-  
-		  <a
-			style="color: white"
-			class="nav-link"
-			routerLink="/register"
-			routerLinkActive="active"
-			>Registrarse</a
-		  >
-		</ng-template>
-		<a
-		  style="color: white"
-		  class="nav-link"
-		  routerLink="/login"
-		  (click)="onLogout()"
-		  >Cerrar Sesion</a
-		>
-	  </li>
-	</div>
-  </nav>
-  
-  <!-------------------------------------------------------------------------------------------------------------------------->
+  <img
+    id="logo"
+    src="https://firebasestorage.googleapis.com/v0/b/buscocredito-c380b.appspot.com/o/LogoBlanco.png?alt=media&token=a871434b-08de-454b-ae8c-57abda9922f7"
+    alt="buscocredito logo "
+    loading="lazy"
+  />
+
+  <button
+    style="background-color: transparent; border: none"
+    class="navbar-toggler"
+    type="button"
+    data-toggle="collapse"
+    data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02"
+    aria-expanded="false"
+    aria-label="Toggle navigation"
+  >
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0"></ul>
+
+    <li class="nav-item form-inline my-2 my-lg-0">
+      <a style="color: white" class="nav-link" routerLink="/financiera"
+        >Inicio</a
+      >
+
+      <ng-template #showLogin>
+        <a
+          style="color: white"
+          class="nav-link"
+          routerLink="/login"
+          routerLinkActive="active"
+          >Iniciar Sesion</a
+        >
+
+        <a
+          style="color: white"
+          class="nav-link"
+          routerLink="/register"
+          routerLinkActive="active"
+          >Registrarse</a
+        >
+      </ng-template>
+      <a
+        style="color: white"
+        class="nav-link"
+        routerLink="/login"
+        (click)="onLogout()"
+        >Cerrar Sesion</a
+      >
+    </li>
+  </div>
+</nav>
+
+<!-------------------------------------------------------------------------------------------------------------------------->
 
 <main class="nav">
   <div class="row">
@@ -64,7 +66,7 @@
         height="100px"
         width="100px"
       />
-      <h3 style="color: white; margin-top: 1rem;">Cuenta Contigo</h3>
+      <h3 style="color: white; margin-top: 1rem">Cuenta Contigo</h3>
 
       <mat-form-field [formGroup]="newPostForm" class="crearSolicitud3">
         <mat-label class="verCreditos">Mis Creditos</mat-label>
@@ -106,7 +108,7 @@
       <!-------------------------------------------------------------------------------------------------------------------------->
 
       <div id="divCredits">
-        <h2 style="margin-left: 5rem;">Creditos Ofrecidos:</h2>
+        <h2 style="margin-left: 5rem">Creditos Ofrecidos:</h2>
         <table
           mat-table
           [dataSource]="dataSource2"
@@ -172,7 +174,7 @@
       <!-------------------------------------------------------------------------------------------------------------------------->
 
       <div id="divWorkers">
-        <h2 style="margin-left: 5rem;">Trabajadores:</h2>
+        <h2 style="margin-left: 5rem">Trabajadores:</h2>
         <table
           mat-table
           [dataSource]="dataSource"
