@@ -55,7 +55,6 @@ export class UserWallComponent implements OnInit, AfterViewInit {
 
   onNewPost() {
     this.openDialogNew();
-    //console.log("Nueva Solicitud")
   }
 
   myFunction() {
@@ -87,8 +86,7 @@ export class UserWallComponent implements OnInit, AfterViewInit {
   }
 
   aceptarCredito() {
-    alert('Haz Aceptado el credito, te contactarán lo más breve posible')
-    
+    Swal.fire("Haz Aceptado el crédito, te contactarán lo más breve posible.");
   }
 
 
@@ -185,7 +183,7 @@ export class UserWallComponent implements OnInit, AfterViewInit {
   datos: any[] = [];
   getData() {
     this.db
-      .collection("posts")
+      .collection("propuestas")
       .get()
       .subscribe((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {

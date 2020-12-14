@@ -7,6 +7,7 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import * as firebase from 'firebase';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from 'src/app/shared/services/auth.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-post',
@@ -22,6 +23,9 @@ export class PostComponent implements OnInit {
   // Variables for select options
   plazoOfrecer = "";
   usuarioEmail: string;
+  // Variables to save user data
+  datos: any[] = [];
+  emailPropuesta: string = ''
 
   onLogout(): void {
     firebase.auth().signOut().then(function () {
@@ -40,9 +44,9 @@ export class PostComponent implements OnInit {
       let amortizacion = (<HTMLInputElement>document.querySelector('#amortizacion')).value;
 
       const idPropuesta = this.db.createId();
-      this.db.collection("posts").doc(`${idPost}`).update({
+      this.db.collection("propuestas").doc(`${idPropuesta}`).set({
         oferta: true,
-        idPropuesta: idPropuesta,
+        emailPropuesta: this.emailPropuesta,
         montoOfrecido: montoOfrecido,
         plazoOfrecido: this.plazoOfrecer,
         tasaAnualOfrecer: tasaAnualOfrecer,
@@ -52,11 +56,15 @@ export class PostComponent implements OnInit {
       })
         .then(function () {
           console.log("Document successfully written!");
+          Swal.fire("Propuesta Enviada");
         })
         .catch(function (error) {
           console.error("Error writing document: ", error);
         });
     })
+    
+
+    
   }
 
   ngOnInit(): void {
@@ -64,6 +72,8 @@ export class PostComponent implements OnInit {
     this.post$ = this.postSvc.getOnePost(idPost);
     //this.setData(idPost)
     this.setData(idPost);
+    this.getData(idPost)
+    
 
     this.authSvc.userData$.subscribe((user) => {
       this.initValuesForm(user);
@@ -82,5 +92,22 @@ export class PostComponent implements OnInit {
       emailEmpresa: user.email
     });
   }
+
+  getData(idPost) {
+    this.db
+      .collection("posts")
+      .get()
+      .subscribe((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          this.datos.push(doc.data());
+          if(doc.data().id === idPost){
+            this.emailPropuesta = doc.data().email;
+
+            console.log(this.emailPropuesta)
+          }
+        });
+      });
+  }
+
 
 }

@@ -155,9 +155,9 @@
     </div>
 
     <div *ngFor="let doc of datos" class="cardNotifiaciones">
-      <div *ngIf="doc.email === usuarioEmail && doc.oferta === true">
+      <div *ngIf="doc.emailPropuesta === usuarioEmail">
         <mat-card>
-          <h2>¡ Te han Ofrecido un Crédito !</h2>
+          <h2>¡ Crédito Ofrecido !</h2>
           <h3>Monto Ofrecido: {{doc.montoOfrecido}}</h3>
           <h3>Plazo Ofrecido: {{doc.plazoOfrecido}}</h3>
           <h3>Taza Anual: {{doc.tasaAnualOfrecer}}</h3>

@@ -37,9 +37,7 @@ export class AuthService {
     } else {
       this.saveUserProfile(user);
     }
-
   }
-
 
   private uploadImage(user: UserI, image: FileI): void {
     this.filePath = `images/${image.name}`;
@@ -55,7 +53,6 @@ export class AuthService {
     ).subscribe();
   }
 
-
   private async saveUserProfile(user: UserI): Promise<any> {
     (await this.afsAuth.currentUser).updateProfile({
       displayName: user.displayName,
@@ -64,10 +61,6 @@ export class AuthService {
       .catch(err => console.log('error', err));
   }
 
-
-  //R
-
-
   registerUser(email: string, password: string) {
     return new Promise((resolve, reject) => {
       this.afsAuth.createUserWithEmailAndPassword(email, password)
@@ -75,8 +68,6 @@ export class AuthService {
         err => reject(err);
     });
   }
-
-
 
   public updateUserData(user: UserI) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
@@ -105,18 +96,12 @@ export class AuthService {
     return userRef.set(data, { merge: true })
   }
 
-
-
   isAuth() {
     return this.afsAuth.authState.pipe(map(auth => auth));
   }
 
-
   isUserAdmin(userUid) {
     return this.afs.doc<UserI>(`users/${userUid}`).valueChanges();
   }
-
-
-
 
 }
