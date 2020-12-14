@@ -68,11 +68,11 @@ export class AuthService {
   //R
 
 
-  registerUser(email: string,password: string){
-    return new Promise ((resolve,reject) =>{
-      this.afsAuth.createUserWithEmailAndPassword(email,password)
-      .then(userData$ => resolve(userData$)),
-      err =>reject(err);
+  registerUser(email: string, password: string) {
+    return new Promise((resolve, reject) => {
+      this.afsAuth.createUserWithEmailAndPassword(email, password)
+        .then(userData$ => resolve(userData$)),
+        err => reject(err);
     });
   }
 
@@ -85,13 +85,13 @@ export class AuthService {
       email: user.email,
       userRol: {
         userRol: true
-       }
+      }
 
     }
     return userRef.set(data, { merge: true })
   }
 
-  public updateUserDataWorker(user: UserI,emailEmpresa) {
+  public updateUserDataWorker(user: UserI, emailEmpresa) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(`users/${user.uid}`);
     const data: UserI = {
       uid: user.uid,
@@ -99,7 +99,7 @@ export class AuthService {
       emailEmpresa: emailEmpresa,
       childRol: {
         childRol: true
-       }
+      }
 
     }
     return userRef.set(data, { merge: true })
@@ -112,11 +112,11 @@ export class AuthService {
   }
 
 
-  isUserAdmin(userUid){
+  isUserAdmin(userUid) {
     return this.afs.doc<UserI>(`users/${userUid}`).valueChanges();
   }
 
-  
+
 
 
 }

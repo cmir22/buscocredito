@@ -4,8 +4,6 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostI } from '../../../shared/models/post.interface';
 import { PostService } from '../../../components/posts/post.service';
 
-
-
 @Component({
   selector: 'app-edit-post',
   templateUrl: './edit-post.component.html',
@@ -56,10 +54,10 @@ export class EditPostComponent implements OnInit {
   private initValuesForm(): void {
     this.editPostForm.patchValue({
       id: this.post.id,
-      nameUser: this.post.nameUser,
-      moneyPost: this.post.moneyPost,
-      tagsPost: this.post.tagsPost,
-      monthPost: this.post.monthPost
+      nameUser: this.post.nombre,
+      moneyPost: this.post.montoSolicitado,
+      tagsPost: this.post.tipoCredito,
+      monthPost: this.post.plazo
 
     });
   }

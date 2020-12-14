@@ -65,17 +65,19 @@
       id="headLogo"
     />
     <button mat-raised-button class="crearSolicitud" (click)="onNewPost()">
-      Solicitar Credito
+      Solicitar Crédito
     </button>
   </div>
 </mat-card>
+
+
 
 <!-------------------------------------------------------------------------------------------------------------------------->
 
 <mat-card class="cardMisCreditos">
   <div class="container">
     <mat-form-field [formGroup]="newPostForm" class="buttonVerMisCreditos">
-      <mat-label class="verCreditosText">Ver Mis Creditos</mat-label>
+      <mat-label class="verCreditosText">Ver Mis Créditos</mat-label>
       <input
         readonly
         class="solicitedCreditsButton"
@@ -87,7 +89,7 @@
     </mat-form-field>
 
     <div id="myDIV">
-      <h3 id="textCreditosSolicitados">Creditos Solicitados:</h3>
+      <h3 id="textCreditosSolicitados">Créditos Solicitados:</h3>
       <table
         mat-table
         [dataSource]="dataSource"
@@ -97,25 +99,25 @@
         <!--  -->
         <ng-container matColumnDef="nameUser">
           <th mat-header-cell *matHeaderCellDef>Nombre</th>
-          <td mat-cell *matCellDef="let element">{{ element.nameUser }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
         </ng-container>
 
         <!--mat-sort-header  -->
         <ng-container matColumnDef="moneyPost">
           <th mat-header-cell *matHeaderCellDef>Cantidad</th>
-          <td mat-cell *matCellDef="let element">$ {{ element.moneyPost }}</td>
+          <td mat-cell *matCellDef="let element">$ {{ element.montoSolicitado }}</td>
         </ng-container>
 
         <!--  -->
         <ng-container matColumnDef="tagsPost">
           <th mat-header-cell *matHeaderCellDef>Tipo</th>
-          <td mat-cell *matCellDef="let element">{{ element.tagsPost }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.tipoCredito }}</td>
         </ng-container>
 
         <!--  -->
         <ng-container matColumnDef="monthPost">
           <th mat-header-cell *matHeaderCellDef>Meses</th>
-          <td mat-cell *matCellDef="let element">{{ element.monthPost }}</td>
+          <td mat-cell *matCellDef="let element">{{ element.plazo }}</td>
         </ng-container>
 
         <!-------------------------------------------------------------------------------------------------------------------------->
@@ -142,11 +144,31 @@
         <!-- NOT FOUND. -->
 
         <tr class="mat-row" *matNoDataRow>
-          <td class="mat-cell" colspan="4">No Ha Solicitado Creditos</td>
+          <td class="mat-cell" colspan="4">No Ha Solicitado Créditos</td>
         </tr>
 
         <!-------------------------------------------------------------------------------------------------------------------------->
       </table>
+
+      
+
+    </div>
+
+    <div *ngFor="let doc of datos" class="cardNotifiaciones">
+      <div *ngIf="doc.email === usuarioEmail && doc.oferta === true">
+        <mat-card>
+          <h2>¡ Te han Ofrecido un Crédito !</h2>
+          <h3>Monto Ofrecido: {{doc.montoOfrecido}}</h3>
+          <h3>Plazo Ofrecido: {{doc.plazoOfrecido}}</h3>
+          <h3>Taza Anual: {{doc.tasaAnualOfrecer}}</h3>
+          <h3>Comisión por Apertura: {{doc.comisionApertura}}</h3>
+          <h3>Seguro de Vida: {{doc.precioSeguroVida}}</h3>
+          <h3>Amortización: {{doc.amortizacion}}</h3>
+          <button mat-button id="acceptCreditButton" (click)="aceptarCredito()">Aceptar Crédito</button>
+        </mat-card>
+      </div>
+      
+      
     </div>
 
     <!-------------------------------------------------------------------------------------------------------------------------->

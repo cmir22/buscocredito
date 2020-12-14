@@ -12,11 +12,13 @@ import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
 import * as firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 interface creditTipe {
   value: string;
   viewValue: string;
 }
+
 
 interface months {
   value: string;
@@ -29,12 +31,15 @@ interface months {
   styleUrls: ['./user-wall.component.scss'],
 })
 export class UserWallComponent implements OnInit, AfterViewInit {
+  usuarioEmail: string;
+  idUsuarioo: string;
   constructor(
     private postSvc: PostService,
     public dialog: MatDialog,
     private route: ActivatedRoute,
-    private authSvc: AuthService
-  ) {}
+    private authSvc: AuthService,
+    private db: AngularFirestore
+  ) { }
 
   displayedColumns: string[] = [
     'nameUser',
@@ -63,6 +68,7 @@ export class UserWallComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit(): void {
+
     this.posts$ = this.postSvc.getAllPosts();
     this.users$ = this.postSvc.getAllUsers();
     this.postSvc
@@ -71,9 +77,20 @@ export class UserWallComponent implements OnInit, AfterViewInit {
 
     this.authSvc.userData$.subscribe((user) => {
       this.initValuesForm(user);
+      this.usuarioEmail = user.email;
     });
     this.myFunction();
+
+    this.getData();
+
+
   }
+
+  aceptarCredito() {
+    alert('Haz Aceptado el credito, te contactarán lo más breve posible')
+    
+  }
+
 
   onLogout(): void {
     firebase.auth().signOut().then(function () {
@@ -81,7 +98,7 @@ export class UserWallComponent implements OnInit, AfterViewInit {
     });
   }
 
-  ngAfterViewInit() {}
+  ngAfterViewInit() { }
 
   //----------------------------------------------------------
 
@@ -148,15 +165,35 @@ export class UserWallComponent implements OnInit, AfterViewInit {
   }
 
   public openDialogNew(post?: PostI): void {
+
     const config = {
       data: {
         message: post ? 'Edit Post' : 'New Post',
         content: post,
       },
     };
-    const dialogRef = this.dialog.open(NewPostComponent, config);
+    const dialogRef = this.dialog.open(NewPostComponent,
+      {
+        width: '620px',
+        height: '550px'
+      });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog result ${result}');
     });
   }
+
+  datos: any[] = [];
+  getData() {
+    this.db
+      .collection("posts")
+      .get()
+      .subscribe((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          this.datos.push(doc.data());
+        });
+      });
+  }
+
 }
+
+

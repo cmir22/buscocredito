@@ -3,29 +3,55 @@
 <mat-dialog-content class="dialog-content">
   <div class="divNewPost">
     <form [formGroup]="newPostForm" id="form">
-      <mat-form-field>
-        <h3>Nombre de la casa hogar o alvergue</h3>
-        <input matInput id="casaHogar" />
-      </mat-form-field>
-
-      <mat-form-field>
-        <h3>Nombre de la casa hogar o alvergue</h3>
-        <input matInput id="casaHogar" />
-      </mat-form-field>
 
       <mat-form-field appearance="fill">
-        <mat-label>Detector</mat-label>
-        <mat-select [(value)]="detector">
-          <mat-option value="Bajo">Bajo</mat-option>
-          <mat-option value="Alerta">Alerta</mat-option>
-          <mat-option value="Promedio">Promedio</mat-option>
-          <mat-option value="Alto">Bajo</mat-option>
+        <mat-label>Tipo de Crédito</mat-label>
+        <mat-select [(value)]="tipoCredito">
+          <mat-option value="Personal">Personal</mat-option>
+          <mat-option value="Negocio">Negocio</mat-option>
         </mat-select>
       </mat-form-field>
 
-      <mat-form-field >
+      <mat-form-field>
+        <h3>Tu Nombre</h3>
+        <input matInput id="nombre" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Proposito del Credito</h3>
+        <input matInput id="propositoCredito" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Monto Solicitado</h3>
+        <input matInput id="montoSolicitado" />
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Plazo</mat-label>
+        <mat-select [(value)]="plazo">
+          <mat-option value="3 ">3 Meses</mat-option>
+          <mat-option value="6 ">6 Meses</mat-option>
+          <mat-option value="9 ">9 Meses</mat-option>
+          <mat-option value="12 ">12 Meses</mat-option>
+          <mat-option value="15 ">15 Meses</mat-option>
+          <mat-option value="18 ">18 Meses</mat-option>
+          <mat-option value="24 ">24 Meses</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Periocidad del Crédito</mat-label>
+        <mat-select [(value)]="periocidadCredito">
+          <mat-option value="Semanal">Semanal</mat-option>
+          <mat-option value="Quincenal">Quincenal</mat-option>
+          <mat-option value="Mensual">Mensual</mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field hidden>
         <mat-label>Email</mat-label>
-        <input matInput placeholder="email" formControlName="email" />
+        <input matInput placeholder="email" formControlName="email" id="email" />
       </mat-form-field>
 
       <button class="mat-flat-button" type="submit" [mat-dialog-close]="true">

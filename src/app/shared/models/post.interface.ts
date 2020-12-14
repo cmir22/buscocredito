@@ -1,6 +1,6 @@
 
 export interface PostI {
-    
+
     titlePost?: string;
     contentPost?: string;
     imagePost?: any;
@@ -12,5 +12,13 @@ export interface PostI {
     monthPost?: string;
     userUId?: string;
     email?: string;
+
+    // New 
+    nombre?: string,
+    tipoCredito?: string,
+    propositoCredito?: string,
+    montoSolicitado?: string,
+    plazo?: string,
+    periocidadCredito?: string,
 
 }

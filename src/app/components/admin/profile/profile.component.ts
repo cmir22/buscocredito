@@ -1,12 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-
 import { FileI } from '../../../shared/models/file.interface';
-import { AngularFireAuth } from '@angular/fire/auth';
 import { AuthService } from '../../../shared/services/auth.service';
 import { UserI } from '../../../shared/models/user.interface';
-import { auth } from 'firebase';
-import { assertNotNull } from '@angular/compiler/src/output/output_ast';
 import * as firebase from 'firebase';
 
 @Component({

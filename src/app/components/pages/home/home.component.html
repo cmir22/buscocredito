@@ -117,24 +117,24 @@
         >
           <ng-container matColumnDef="nameUser">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
-            <td mat-cell *matCellDef="let element">{{ element.nameUser }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
           </ng-container>
 
           <ng-container matColumnDef="moneyPost">
             <th mat-header-cell *matHeaderCellDef>Dinero</th>
             <td mat-cell *matCellDef="let element">
-              $ {{ element.moneyPost }}
+              $ {{ element.montoSolicitado }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="tagsPost">
             <th mat-header-cell *matHeaderCellDef>Tipo de Prestamo</th>
-            <td mat-cell *matCellDef="let element">{{ element.tagsPost }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.tipoCredito }}</td>
           </ng-container>
 
           <ng-container matColumnDef="monthPost">
             <th mat-header-cell *matHeaderCellDef>Meses</th>
-            <td mat-cell *matCellDef="let element">{{ element.monthPost }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.plazo }}</td>
           </ng-container>
 
           <!-------------------------------------------------------------------------------------------------------------------------->
@@ -184,25 +184,25 @@
           <!--  -->
           <ng-container matColumnDef="nameUser">
             <th mat-header-cell *matHeaderCellDef>Nombre</th>
-            <td mat-cell *matCellDef="let element">{{ element.nameUser }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.nombreTrabajador }}</td>
           </ng-container>
 
           <!--mat-sort-header  -->
           <ng-container matColumnDef="moneyPost">
             <th mat-header-cell *matHeaderCellDef>Correo Electronico</th>
-            <td mat-cell *matCellDef="let element">{{ element.email }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.emailTrabajador }}</td>
           </ng-container>
 
           <!--  -->
           <ng-container matColumnDef="tagsPost">
             <th mat-header-cell *matHeaderCellDef>Ciudad</th>
-            <td mat-cell *matCellDef="let element">{{ element.Ciudad }}</td>
+            <td mat-cell *matCellDef="let element">{{ element.ciudadTrabajador }}</td>
           </ng-container>
 
           <!--  -->
           <ng-container matColumnDef="monthPost">
-            <th mat-header-cell *matHeaderCellDef>Antiguedad</th>
-            <td mat-cell *matCellDef="let element">{{ element.monthPost }}</td>
+            <th mat-header-cell *matHeaderCellDef>Numero de Trabajador</th>
+            <td mat-cell *matCellDef="let element">{{ element.noTrabajador }}</td>
           </ng-container>
 
           <!-------------------------------------------------------------------------------------------------------------------------->

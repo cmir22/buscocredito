@@ -1,5 +1,4 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { WelcomeHomeComponent } from './welcome-home.component';
 
 describe('WelcomeHomeComponent', () => {

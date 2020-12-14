@@ -1,46 +1,47 @@
-<section id="register" class="mb-5 mt-5">
-  <form #formRegister="ngForm" (ngSubmit)="onAddUser('', '')">
+<div id="registerWorker">
+  <form action="#" id="formCreateWorker">
     <h1 class="h3 mb-3 font-weight-normal">Registro de Nuevo Trabajador</h1>
 
-    <div class="form-group">
-      <input
-        type="name"
-        name="name"
-        class="form-control"
-        placeholder="Nombre"
-        [(ngModel)]="nombre"
-        required
-        minlength="5"
-      />
-    </div>
+    <div class="fields">
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Nombre" required id="nombre" />
+      </mat-form-field>
 
-    <div class="form-group">
-      <input
-        type="email"
-        name="email"
-        class="form-control"
-        placeholder="Email"
-        [(ngModel)]="email"
-        required
-        minlength="8"
-      />
-    </div>
+      <mat-form-field class="example-full-width">
+        <input matInput type="text" placeholder="Ciudad" required id="ciudad" />
+      </mat-form-field>
 
-    <div class="form-group">
-      <input
-        type="password"
-        name="password"
-        class="form-control"
-        placeholder="Contraseña"
-        [(ngModel)]="password"
-        required
-        minlength="5"
-        maxlength="10"
-      />
-    </div>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="text"
+          placeholder="Numero de Trabajador"
+          required
+          id="noTrabajador"
+        />
+      </mat-form-field>
 
-    <button type="submit" class="btn btn-lg btn-secondary btn-block">
-      Registrar
-    </button>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="email"
+          placeholder="Correo Electronico"
+          required
+          id="email"
+        />
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="password"
+          placeholder="Contraseña"
+          required
+          id="password"
+        />
+      </mat-form-field>
+
+      <button mat-raised-button type="submit">Registrar</button>
+    </div>
   </form>
-</section>
+</div>

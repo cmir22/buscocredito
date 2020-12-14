@@ -5,15 +5,10 @@ import { MatPaginator } from '@angular/material/paginator';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { PostService } from '../../posts/post.service';
 import { PostI } from 'src/app/shared/models/post.interface';
-
 import Swal from 'sweetalert2';
 import { MatDialog } from '@angular/material/dialog';
-
-import { EditPostComponent } from '../../posts/edit-post/edit-post.component';
-
 import { NewPostComponent } from '../../posts/new-post/new-post.component';
 import { ModalComponent } from '../../../shared/component/modal/modal.component';
-import { ModalModule } from 'src/app/shared/component/modal/modal.module';
 import { UserI } from 'src/app/shared/models/user.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import * as firebase from 'firebase';

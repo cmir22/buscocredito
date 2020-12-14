@@ -4,9 +4,6 @@ import {  AuthService } from '../../shared/services/auth.service';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 
-//import { UserI } from '../../shared/models/user.interface';
-
-
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -21,8 +18,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
-
 
   onAddUser(email: string, pass: string){
     return new Promise((resolve, reject) => {

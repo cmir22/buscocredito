@@ -74,20 +74,20 @@
   >
     <div>
       <h3 class="infoCardText" mat-flat-button disabled>
-        Solicitante: {{ post.nameUser }}
+        Solicitante: {{ post.nombre }}
       </h3>
 
       <mat-card class="postCard">
         <h3 class="infoCardText" mat-flat-button disabled>
-          Tipo Prestamo: {{ post.tagsPost }}
+          Tipo Prestamo: {{ post.tipoCredito }}
         </h3>
 
         <h3 class="infoCardText" mat-flat-button disabled>
-          Cantidad: ${{ post.moneyPost }} Pesos
+          Cantidad: ${{ post.montoSolicitado }} Pesos
         </h3>
 
         <h3 class="infoCardText" mat-flat-button disabled>
-          Tiempo: {{ post.monthPost }} Meses
+          Tiempo: {{ post.plazo }} Meses
         </h3>
       </mat-card>
     </div>

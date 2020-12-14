@@ -44,6 +44,9 @@
         </h1>
       </mat-card-title>
     </mat-card-header>
+    <h1 style="color: white">
+      {{ post.nombre }}
+    </h1>
     <!--  <img matCardImage [src]="post.imagePost">-->
     <mat-card-content>
       <div>
@@ -51,20 +54,21 @@
           <h1>
             Tipo de Prestamo:
             <span class="data">
-              {{ post.tagsPost }}
+              {{ post.tipoCredito }}
             </span>
           </h1>
         </mat-card>
 
         <mat-card class="divData">
           <h1>
-            Cantidad: <span class="data"> {{ post.moneyPost }} Pesos </span>
+            Monto:
+            <span class="data"> {{ post.montoSolicitado }} Pesos </span>
           </h1>
         </mat-card>
 
         <mat-card class="divData">
           <h1>
-            Tiempo: <span class="data"> {{ post.monthPost }} Meses </span>
+            Plazo: <span class="data"> {{ post.plazo }} Meses </span>
           </h1>
         </mat-card>
       </div>
@@ -77,23 +81,47 @@
   <div class="example-container">
     <form action="#" id="formBid">
       <mat-form-field appearance="fill" id="field">
-        <mat-label class="labelsColor">Banco</mat-label>
-        <input matInput id="bidBanco" />
+        <mat-label class="labelsColor">Monto a Ofrecer</mat-label>
+        <input matInput id="montoOfrecido" />
       </mat-form-field>
       <br />
       <!-------------------------------------------------------->
-      <mat-form-field appearance="fill" id="field">
-        <mat-label class="labelsColor">Tipo de Credito</mat-label>
-        <mat-select [(value)]="tipoPrestamo">
-          <mat-option value="Personal">Personal</mat-option>
-          <mat-option value="Negocio">Negocio</mat-option>
+      <mat-form-field appearance="field" style="width: 100%; background-color: transparent;">
+        <mat-label class="labelsColor">Pazo a Ofrecer</mat-label>
+        <mat-select [(value)]="plazoOfrecer">
+          <mat-option value="3 Meses">3 Meses</mat-option>
+          <mat-option value="6 Meses">6 Meses</mat-option>
+          <mat-option value="9 Meses">9 Meses</mat-option>
+          <mat-option value="12 Meses">12 Meses</mat-option>
+          <mat-option value="15 Meses">15 Meses</mat-option>
+          <mat-option value="18 Meses">18 Meses</mat-option>
+          <mat-option value="24 Meses">24 Meses</mat-option>
         </mat-select>
       </mat-form-field>
+
       <br />
       <!-------------------------------------------------------->
       <mat-form-field appearance="fill" id="field">
-        <mat-label class="labelsColor">Tiempo</mat-label>
-        <input matInput id="bidTiempo" />
+        <mat-label class="labelsColor">Tasa Anual a Ofrecer</mat-label>
+        <input matInput id="tasaAnualOfrecer" />
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Comisión Apertura</mat-label>
+        <input matInput id="comisionApertura" />
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Precio Seguro de Vida</mat-label>
+        <input matInput id="precioSeguroVida" />
+      </mat-form-field>
+      <br />
+      <!-------------------------------------------------------->
+      <mat-form-field appearance="fill" id="field">
+        <mat-label class="labelsColor">Amortización</mat-label>
+        <input matInput id="amortizacion" />
       </mat-form-field>
       <br />
       <!-------------------------------------------------------->

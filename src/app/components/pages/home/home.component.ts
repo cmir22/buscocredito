@@ -1,9 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
 import { PostService } from '../../posts/post.service';
 import { PostI } from '../../../shared/models/post.interface';
 import { Observable } from 'rxjs';
-
 import { UserI } from 'src/app/shared/models/user.interface';
 import { NewPostComponent } from '../../posts/new-post/new-post.component'
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +11,6 @@ import { AuthService } from 'src/app/shared/services/auth.service';
 import { MatTableDataSource } from '@angular/material/table';
 import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
-
 import { NewWorkerComponent } from '../../../new-worker/new-worker.component';
 import * as firebase from 'firebase';
 
@@ -217,8 +214,8 @@ export class HomeComponent implements OnInit {
   openDialogRegister() {
 
     this.dialog.open(NewWorkerComponent, {
-      width: '550px',
-      height: '450px',
+      width: '500px',
+      height: '540px',
     });
 
   }
