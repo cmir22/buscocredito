@@ -11,6 +11,10 @@ export interface childRol {
     childRol?: any;
 }
 
+export interface fatherRol {
+    fatherRol?: any;
+}
+
 export interface UserI {
     id?: any;
     email?: string;
@@ -23,6 +27,7 @@ export interface UserI {
     userRol?: userRol;
     adminRol?: adminRol;
     childRol?: childRol;
+    fatherRol?: fatherRol
 
 
 

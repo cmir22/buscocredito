@@ -12,6 +12,7 @@ import { ModalComponent } from '../../../shared/component/modal/modal.component'
 import { UserI } from 'src/app/shared/models/user.interface';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import * as firebase from 'firebase';
+import { NewFinancieraComponent } from 'src/app/new-financiera/new-financiera.component';
 
 @Component({
   selector: 'app-about',
@@ -133,4 +134,12 @@ export class AboutComponent implements OnInit, AfterViewInit {
       console.log('Dialog result ${result}');
     });
   }
+
+  openDialogRegister() {
+    this.dialog.open(NewFinancieraComponent, {
+      width: '500px',
+      height: '540px',
+    });
+  }
+
 }

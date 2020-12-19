@@ -173,7 +173,7 @@ export class UserWallComponent implements OnInit, AfterViewInit {
     const dialogRef = this.dialog.open(NewPostComponent,
       {
         width: '620px',
-        height: '550px'
+        height: '620px'
       });
     dialogRef.afterClosed().subscribe((result) => {
       console.log('Dialog result ${result}');

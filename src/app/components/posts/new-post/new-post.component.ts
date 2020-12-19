@@ -21,7 +21,8 @@ export class NewPostComponent implements OnInit {
     email: new FormControl('', Validators.required),
   });
 
-  setData(propositoCredito, montoSolicitado, email, nombre) {
+  setData(propositoCredito, montoSolicitado, email, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,
+    rfc, ciudad, colonia, municipio, estado, codigoPostal, numeroTelefono) {
     const idCustom = this.db.createId();
     // Here we insert into the database
     this.db.collection('posts').doc(`${idCustom}`).set({
@@ -32,7 +33,17 @@ export class NewPostComponent implements OnInit {
       plazo: this.plazo,
       periocidadCredito: this.periocidadCredito,
       email: email,
-      nombre: nombre
+      nombre: nombre,
+      apellidoPaterno: apellidoPaterno,
+      apellidoMaterno: apellidoMaterno,
+      fechaNacimiento: fechaNacimiento,
+      rfc: rfc,
+      ciudad: ciudad,
+      colonia: colonia,
+      municipio: municipio,
+      estado: estado,
+      codigoPostal: codigoPostal,
+      numeroTelefono: numeroTelefono
     })
   }
 
@@ -52,8 +63,21 @@ export class NewPostComponent implements OnInit {
       let montoSolicitado = (<HTMLInputElement>document.querySelector('#montoSolicitado')).value;
       let email = (<HTMLInputElement>document.querySelector('#email')).value;
       let nombre = (<HTMLInputElement>document.querySelector('#nombre')).value;
+      let apellidoPaterno = (<HTMLInputElement>document.querySelector('#apellidoPaterno')).value;
+      let apellidoMaterno = (<HTMLInputElement>document.querySelector('#apellidoMaterno')).value;
+      let fechaNacimiento = (<HTMLInputElement>document.querySelector('#fechaNacimiento')).value;
+      let rfc = (<HTMLInputElement>document.querySelector('#rfc')).value;
+      let ciudad = (<HTMLInputElement>document.querySelector('#ciudad')).value;
+      let colonia = (<HTMLInputElement>document.querySelector('#colonia')).value;
+      let municipio = (<HTMLInputElement>document.querySelector('#municipio')).value;
+      let estado = (<HTMLInputElement>document.querySelector('#estado')).value;
+      let codigoPostal = (<HTMLInputElement>document.querySelector('#codigoPostal')).value;
+      let numeroTelefono = (<HTMLInputElement>document.querySelector('#numeroTelefono')).value;
+
       // Lets call the function and add the parameters to arrive into collection firebase 
-      this.setData(propositoCredito, montoSolicitado, email, nombre);
+      //this.setData(propositoCredito, montoSolicitado, email, nombre);
+      this.setData(propositoCredito, montoSolicitado, email, nombre, apellidoPaterno, apellidoMaterno, fechaNacimiento,
+        rfc, ciudad, colonia, municipio, estado, codigoPostal, numeroTelefono)
     })
   }
 

@@ -13,6 +13,7 @@ import Swal from 'sweetalert2';
 import { ModalComponent } from 'src/app/shared/component/modal/modal.component';
 import { NewWorkerComponent } from '../../../new-worker/new-worker.component';
 import * as firebase from 'firebase';
+import { AngularFirestore } from '@angular/fire/firestore';
 
 
 interface creditTipe {
@@ -34,15 +35,28 @@ interface months {
 export class HomeComponent implements OnInit {
 
 
-  constructor(private postSvc: PostService, public dialog: MatDialog, private route: ActivatedRoute, private authSvc: AuthService) { }
+  constructor(private postSvc: PostService, public dialog: MatDialog, private route: ActivatedRoute, private authSvc: AuthService,private db: AngularFirestore) { }
 
   //displayedColumns: string[] = ['nameUser', 'moneyPost', 'monthPost', 'tagsPost', 'actions'];
-  displayedColumns: string[] = ['nameUser', 'moneyPost', 'tagsPost', 'monthPost', 'actions'];
+  datos: any[] = [];
+  displayedColumns: string[] = ['nameUser', 'moneyPost', 'tagsPost', 'monthPost','oferta', 'actions'];
+  //displayedColumnsPropuestas: string[] = ['nameUser', 'moneyPost', 'tagsPost', 'monthPost', 'actions','oferta'];
   dataSource = new MatTableDataSource();
-  dataSource2 = new MatTableDataSource();
+  dataSourcePropuestas: MatTableDataSource<any>;
 
   public posts$: Observable<PostI[]>;
   public users$: Observable<UserI[]>;
+
+  getData() {
+    this.db
+      .collection("propuestas")
+      .get()
+      .subscribe((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          this.datos.push(doc.data());
+        });
+      });
+  }
 
   //--------GET POST--------------------------------------------------
 
@@ -54,43 +68,31 @@ export class HomeComponent implements OnInit {
   //--------GET POST--------------------------------------------------
 
   DisplayTableCredits() {
-
     var divWorkers = document.getElementById("divWorkers");
     var divCredits = document.getElementById("divCredits");
-
-
     if (divCredits.style.display == "none") {
       divCredits.style.display = "block";
     } else {
       divCredits.style.display = "none";
     }
-
   }
 
 
   DisplayTableWorkers() {
-
     var divWorkers = document.getElementById("divWorkers");
     var divCredits = document.getElementById("divCredits");
-
-
     if (divWorkers.style.display == "none") {
       divWorkers.style.display = "block";
     } else {
       divWorkers.style.display = "none";
     }
-
-
   }
 
   //----------------------------------------------------------
 
   ngOnInit(): void {
 
-    //--------GET POST--------------------------------------------------
-
-    this.posts$ = this.postSvc.getAllPosts();
-    this.postSvc.getAllPosts().subscribe(posts => (this.dataSource2.data = posts));
+    this.getData();
 
     //--------GET USERS--------------------------------------------------
     this.users$ = this.postSvc.getAllUsers();
@@ -112,7 +114,11 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  ngAfterViewInit() { }
+  ngAfterViewInit() {
+    this.db.collection<any>('propuestas').valueChanges().subscribe(data => {
+      this.dataSourcePropuestas = new MatTableDataSource(data);
+    })
+   }
 
   //----------------------------------------------------------
 
@@ -123,7 +129,7 @@ export class HomeComponent implements OnInit {
 
   applyFilter2(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource2.filter = filterValue.trim().toLowerCase();
+    this.dataSourcePropuestas.filter = filterValue.trim().toLowerCase();
   }
 
 
@@ -134,14 +140,10 @@ export class HomeComponent implements OnInit {
     email: new FormControl('', Validators.required),
   });
 
-
-
   private initValuesForm(user: UserI): void {
     this.newPostForm.patchValue({
       email: user.email,
-
     });
-
   }
 
   //----------------------------------------------------------
@@ -155,7 +157,6 @@ export class HomeComponent implements OnInit {
 
   onDeletePost(post: PostI) {
     console.log('Delete post', post);
-
     Swal.fire({
       title: 'Estas Seguro?',
       text: 'Esto no podra ser Revertido',
@@ -212,13 +213,10 @@ export class HomeComponent implements OnInit {
 
 
   openDialogRegister() {
-
     this.dialog.open(NewWorkerComponent, {
       width: '500px',
       height: '540px',
     });
-
   }
-
 
 }

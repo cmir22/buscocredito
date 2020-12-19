@@ -1,6 +1,6 @@
-<h2>Solicitar Credito</h2>
 
-<mat-dialog-content class="dialog-content">
+  <!-- Used </mat-dialog-content>-->
+  <h2>Solicitar Credito</h2>
   <div class="divNewPost">
     <form [formGroup]="newPostForm" id="form">
 
@@ -13,9 +13,64 @@
       </mat-form-field>
 
       <mat-form-field>
-        <h3>Tu Nombre</h3>
+        <h3>Nombre</h3>
         <input matInput id="nombre" />
       </mat-form-field>
+
+      <!-- Added -->
+
+      <mat-form-field>
+        <h3>Apellido Paterno</h3>
+        <input matInput id="apellidoPaterno" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Apellido Materno</h3>
+        <input matInput id="apellidoMaterno" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Fecha de Nacimiento</h3>
+        <input matInput id="fechaNacimiento" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>RFC</h3>
+        <input matInput id="rfc" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Ciudad</h3>
+        <input matInput id="ciudad" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Colonia</h3>
+        <input matInput id="colonia" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Municipio</h3>
+        <input matInput id="municipio" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Estado</h3>
+        <input matInput id="estado" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Codigo Postal</h3>
+        <input matInput id="codigoPostal" />
+      </mat-form-field>
+
+      <mat-form-field>
+        <h3>Numero de Telefono</h3>
+        <input matInput id="numeroTelefono" />
+      </mat-form-field>
+
+      <!-- Added end-->
+
 
       <mat-form-field>
         <h3>Proposito del Credito</h3>
@@ -54,9 +109,8 @@
         <input matInput placeholder="email" formControlName="email" id="email" />
       </mat-form-field>
 
-      <button class="mat-flat-button" type="submit" [mat-dialog-close]="true">
+      <button style="background-color: green;color: white;" class="mat-flat-button" type="submit" [mat-dialog-close]="true">
         Terminar
       </button>
     </form>
   </div>
-</mat-dialog-content>

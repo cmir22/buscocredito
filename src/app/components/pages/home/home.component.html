@@ -27,6 +27,10 @@
         >Inicio</a
       >
 
+      <a style="color: white" class="nav-link" routerLink="/workers"
+        >Marketplace</a
+      >
+
       <ng-template #showLogin>
         <a
           style="color: white"
@@ -99,8 +103,8 @@
       <mat-card class="creditosSolicitados">
         <h1>Bienvenido</h1>
         <div class="contianer-btn-new">
-          <button mat-stroked-button (click)="openDialogRegister()">
-            <mat-icon>note_add</mat-icon>&nbsp; Nuevo Trabajador
+          <button mat-button (click)="openDialogRegister()" id="buttonNewWorker">
+            <mat-icon>note_add</mat-icon> Nuevo Trabajador
           </button>
         </div>
       </mat-card>
@@ -111,30 +115,38 @@
         <h2 style="margin-left: 5rem">Creditos Ofrecidos:</h2>
         <table
           mat-table
-          [dataSource]="dataSource2"
+          [dataSource]="dataSourcePropuestas"
           class="mat-elevation-z8"
           matSort
         >
           <ng-container matColumnDef="nameUser">
-            <th mat-header-cell *matHeaderCellDef>Nombre</th>
-            <td mat-cell *matCellDef="let element">{{ element.nombre }}</td>
+            <th mat-header-cell *matHeaderCellDef>Monto Ofrecido</th>
+            <td mat-cell *matCellDef="let element">$ {{ element.montoOfrecido }}</td>
           </ng-container>
 
           <ng-container matColumnDef="moneyPost">
-            <th mat-header-cell *matHeaderCellDef>Dinero</th>
+            <th mat-header-cell *matHeaderCellDef>Plazo</th>
             <td mat-cell *matCellDef="let element">
-              $ {{ element.montoSolicitado }}
+               {{ element.plazoOfrecido }}
             </td>
           </ng-container>
 
           <ng-container matColumnDef="tagsPost">
-            <th mat-header-cell *matHeaderCellDef>Tipo de Prestamo</th>
-            <td mat-cell *matCellDef="let element">{{ element.tipoCredito }}</td>
+            <th mat-header-cell *matHeaderCellDef>Seguro de Vida</th>
+            <td mat-cell *matCellDef="let element">$ {{ element.precioSeguroVida }}</td>
           </ng-container>
 
           <ng-container matColumnDef="monthPost">
-            <th mat-header-cell *matHeaderCellDef>Meses</th>
-            <td mat-cell *matCellDef="let element">{{ element.plazo }}</td>
+            <th mat-header-cell *matHeaderCellDef>Tasa Anual Ofrecida</th>
+            <td mat-cell *matCellDef="let element">$ {{ element.tasaAnualOfrecer }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="oferta">
+            <th mat-header-cell *matHeaderCellDef>Oferta</th>
+            <td mat-cell *matCellDef="let element"><ng-container *ngIf="element.oferta === true">En espera</ng-container>
+             <ng-container *ngIf="element.oferta == false">Aceptado</ng-container>
+            </td>
+             
           </ng-container>
 
           <!-------------------------------------------------------------------------------------------------------------------------->
@@ -203,6 +215,11 @@
           <ng-container matColumnDef="monthPost">
             <th mat-header-cell *matHeaderCellDef>Numero de Trabajador</th>
             <td mat-cell *matCellDef="let element">{{ element.noTrabajador }}</td>
+          </ng-container>
+
+          <ng-container matColumnDef="oferta">
+            <th mat-header-cell *matHeaderCellDef>Numero de Trabajador</th>
+            <td mat-cell *matCellDef="let element">{{ element.idTrabajador }}</td>
           </ng-container>
 
           <!-------------------------------------------------------------------------------------------------------------------------->

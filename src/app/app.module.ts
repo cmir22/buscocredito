@@ -19,6 +19,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { NewWorkerComponent } from './new-worker/new-worker.component';
 import { WelcomeHomeComponent } from './welcome-home/welcome-home.component';
 import { WorkerComponent } from './worker/worker.component';
+import { NewFinancieraComponent } from './new-financiera/new-financiera.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { WorkerComponent } from './worker/worker.component';
     NewWorkerComponent,
     WelcomeHomeComponent,
     WorkerComponent,
+    NewFinancieraComponent,
   ],
   imports: [
     BrowserModule,

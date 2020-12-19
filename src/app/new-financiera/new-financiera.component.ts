@@ -6,11 +6,11 @@ import { UserI } from '../shared/models/user.interface';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-new-worker',
-  templateUrl: './new-worker.component.html',
-  styleUrls: ['./new-worker.component.scss'],
+  selector: 'app-new-financiera',
+  templateUrl: './new-financiera.component.html',
+  styleUrls: ['./new-financiera.component.scss']
 })
-export class NewWorkerComponent implements OnInit {
+export class NewFinancieraComponent implements OnInit {
 
   constructor(private authService: AuthService, private db: AngularFirestore, private authSvc: AuthService) { }
 
@@ -48,8 +48,8 @@ export class NewWorkerComponent implements OnInit {
           ciudadTrabajador: ciudad,
           noTrabajador: noTrabajador,
           emailEmpresa: this.emailEmpresa,
-          childRol: {
-            childRol: true
+          fatherRol: {
+            fatherRol: true
           }
         })
       })
@@ -81,4 +81,5 @@ export class NewWorkerComponent implements OnInit {
       emailEmpresa: user.email
     });
   }
+
 }

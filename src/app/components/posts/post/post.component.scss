@@ -8,6 +8,7 @@ $blanco: #ecf0f1;
 
 #mainCard {
   background-color: #343a40;
+  max-width: 55rem;
 }
 
 #nameUser {
@@ -28,11 +29,7 @@ $blanco: #ecf0f1;
   margin-top: 3rem;
 }
 
-#field {
-  width: 300px;
-}
-
-#in{
+#in {
   color: red;
 }
 
@@ -51,15 +48,19 @@ $blanco: #ecf0f1;
 
 #cardOfertar {
   margin-top: -25rem;
-  margin-right: 20em;
+  margin-right: 10rem;
   background-color: $blanco;
   float: right;
-  width: 17.5%;
+  width: 20%;
 
   #buttonSubmitText {
     font-size: 22px;
     color: $blanco;
     border: 0px;
     padding: 0px;
+  }
+
+  #field {
+    width: 100%;
   }
 }

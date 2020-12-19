@@ -16,7 +16,7 @@ import Swal from 'sweetalert2';
 })
 export class PostComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute, private postSvc: PostService, private db: AngularFirestore,private authSvc: AuthService) { }
+  constructor(private route: ActivatedRoute, private postSvc: PostService, private db: AngularFirestore, private authSvc: AuthService) { }
 
   public post$: Observable<PostI>;
 
@@ -25,7 +25,8 @@ export class PostComponent implements OnInit {
   usuarioEmail: string;
   // Variables to save user data
   datos: any[] = [];
-  emailPropuesta: string = ''
+  emailPropuesta: any;
+  emailFinanciera: string = ''
 
   onLogout(): void {
     firebase.auth().signOut().then(function () {
@@ -48,39 +49,38 @@ export class PostComponent implements OnInit {
         oferta: true,
         emailPropuesta: this.emailPropuesta,
         montoOfrecido: montoOfrecido,
+        emailTrabajador: this.usuarioEmail,
         plazoOfrecido: this.plazoOfrecer,
         tasaAnualOfrecer: tasaAnualOfrecer,
         comisionApertura: comisionApertura,
         precioSeguroVida: precioSeguroVida,
-        amortizacion: amortizacion
+        amortizacion: amortizacion,
+        emailFinanciera: this.emailFinanciera
       })
         .then(function () {
           console.log("Document successfully written!");
           Swal.fire("Propuesta Enviada");
         })
         .catch(function (error) {
+          Swal.fire("Falto llenar algo...");
           console.error("Error writing document: ", error);
         });
     })
-    
-
-    
   }
 
   ngOnInit(): void {
     const idPost = this.route.snapshot.params.id;
     this.post$ = this.postSvc.getOnePost(idPost);
     //this.setData(idPost)
-    this.setData(idPost);
-    this.getData(idPost)
-    
 
     this.authSvc.userData$.subscribe((user) => {
       this.initValuesForm(user);
       this.usuarioEmail = user.email;
-      console.log(this.usuarioEmail)
+      console.log('Email Trabajador: '+this.usuarioEmail)
     });
-
+    this.getData(idPost);
+    this.getFinancieraEmail();
+    this.setData(idPost);
   }
 
   public profileForm = new FormGroup({
@@ -100,10 +100,24 @@ export class PostComponent implements OnInit {
       .subscribe((querySnapshot) => {
         querySnapshot.docs.forEach((doc) => {
           this.datos.push(doc.data());
-          if(doc.data().id === idPost){
+          if (doc.data().id === idPost) {
             this.emailPropuesta = doc.data().email;
+            console.log('Email Propuesta: '+this.emailPropuesta)
+          }
+        });
+      });
+  }
 
-            console.log(this.emailPropuesta)
+  getFinancieraEmail() {
+    this.db
+      .collection("users")
+      .get()
+      .subscribe((querySnapshot) => {
+        querySnapshot.docs.forEach((doc) => {
+          this.datos.push(doc.data());
+          if (doc.data().emailTrabajador === this.usuarioEmail) {
+            this.emailFinanciera = doc.data().emailEmpresa;
+            console.log('Email Financiera: '+this.emailFinanciera)
           }
         });
       });

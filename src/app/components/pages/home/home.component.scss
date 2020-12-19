@@ -136,8 +136,8 @@ table,
   margin: 1rem -2rem;
   margin-top: -50px;
 
-  button {
-    width: 12%;
+  #buttonNewWorker {
+    float: right;
     color: white;
     background: $green;
     cursor: pointer;
